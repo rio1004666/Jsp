@@ -6,13 +6,40 @@
 <title>2_1_Scriptlet</title>
 
 <!-- 
+
 	날짜 : 2021/08/03
 	이름 : 강병화
 	내용 : JSP스크립트릿(Scriptlet)실습하기 교재 p106
+	스크립트릿(Scriptlet)
+	 - JSP 문서에서 자바 프로그래밍이 실행되는 코드영역 
+	 - 모델1에서 사용되는 동적 실행 영역
+	표현식 (Expression)
+	-스크립트릿에서 선언된 변수를 참조하여 출력하는 출력구문 
  -->
 </head>
 
 <body>
-	<h3>1.Scriptlet 기본 </h3>
+
+	<h3> 1.Scriptlet 기본 </h3>
+	<%
+		// Scriptlet(프로그래밍 역역)
+		int var1 = 1;
+		
+		boolean var2 = true;
+		
+		double var3 = 3.14;
+		
+		float var4 = 4.667f;
+		
+		String str = "hello";
+		
+		out.print("<h4> var1 :" + var1 + "</h4>"); // 바로 out객체 
+		out.print("<h4> var2: " + var2 + "</h4>");
+		
+		
+	%>
+	<%-- 표현식 출력 --%>
+	<h4>var3 : <%= var3 %></h4>
+	<h4>var4 : <%= var4 %></h4>
 </body>
 </html>
