@@ -7,6 +7,7 @@
 </head>
 <body>
 	<h3>1.Jsp Insert 실습하기</h3>
+	
 	<h4>User 등록</h4>
 	<form action="./proc/insertProc.jsp" method="post">
 	<table border="1">
@@ -32,7 +33,8 @@
 		</tr>
 		<tr>
 
-			<td colspan="2" align="right"><input type="submit" value="등록하기">
+			<td colspan="2" align="right">
+			<input type="submit" value="등록하기">
 			</td>
 
 		</tr>
