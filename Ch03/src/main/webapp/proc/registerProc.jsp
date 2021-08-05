@@ -22,7 +22,10 @@
  -->
 </head>
 <body>
+
 	<h3>회원가입 데이터 수신하기 </h3>
+	
+	
 	<%
 		request.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("name");
@@ -30,17 +33,24 @@
 		String[] hobbies = request.getParameterValues("hobby");
 		// 취미는 여러개 받을 수 있으므로 문자열 여러개로 받는 배열!!! ~s로 끝나면 배열이다 무조건 
 		String addr = request.getParameter("addr");
+		
+		// 받는 모든 것들은 문자열 객체이다 
 	%>
+	
 	<p>
+		
 		이름 : <%=name %></br>
 		성별 : <%= (gender.equals("1"))? "남자" :  "여자" %> </br>
 		취미 : <%
 				for(String str : hobbies){
-					out.print(str + " , ");
+					//out.print(str + " , ");
+					
+				
 				}
 				%>
 				</br>
 		주소 : <%=addr %></br>
+		
 	</p>
 	<a href="/Ch03/3_1_Request.jsp"></a>
 </body>
