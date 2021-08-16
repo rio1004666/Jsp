@@ -8,6 +8,18 @@ public class Sql {
 	// += 이렇게 대입연산자를 사용하면 문장을 끝내는 ;세미콜론이 붙기때문엣 
 	// 전역변수에서는 사용되지 않는다.
 	public static final String SELECT_MEMBER = "SELECT * FROM `Jboard_member` WHERE `uid`=? AND `pass`=PASSWORD(?);";  // 암호화한 비밀번호를 그대로 매핑 
+	
+	public static final String SELECT_MAX_SEQ = "SELECT MAX(`seq`) FROM `Jboard_article`;";
+	public static final String SELECT_COUNT_UID  = "SELECT COUNT(`uid`) FROM `Jboard_member` WHERE `uid`=?;";
+	public static final String SELECT_COUNT_HP  = "SELECT COUNT(`hp`) FROM `Jboard_member` WHERE `hp`=?;";
+	public static final String SELECT_COUNT_EMAIL = "SELECT COUNT(`email`) FROM `Jboard_member` WHERE `email`=?;";
+	
+	
+	
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
 	public static final String INSERT_MEMBER = "INSERT INTO `Jboard_member` SET "
 	 + "`uid`=?,"
 	 + "`pass`=PASSWORD(?),"// 테이블필드명을 써야한다 그리고 비밀번호를 암호화해야한다 
@@ -21,9 +33,17 @@ public class Sql {
 	 + "`regip`=?,"
 	 + "`rdate`=NOW();";
 	
-	public static final String SELECT_COUNT_UID  = "SELECT COUNT(`uid`) FROM `Jboard_member` WHERE `uid`=?;";
-	public static final String SELECT_COUNT_HP  = "SELECT COUNT(`hp`) FROM `Jboard_member` WHERE `hp`=?;";
-	public static final String SELECT_COUNT_EMAIL = "SELECT COUNT(`email`) FROM `Jboard_member` WHERE `email`=?;";
-	
-			
+
+	public static final String INSERT_ARTICLE = "INSERT INTO `Jboard_article` SET "
+																								+"`title`=?,"
+																								+"`content`=?,"
+																								+"`file`=?,"
+																								+"`uid`=?,"
+																								+"`regip`=?,"
+																								+"`rdate`=NOW();";
+	public static final String INSERT_FILE = "INSERT INTO `Jboard_file` SET "
+			+"`parent`=?,"
+			+"`oriName`=?,"
+			+"`newName`=?,"
+			+"`rdate`=NOW();";
 }

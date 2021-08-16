@@ -21,6 +21,8 @@
 				alert('정상적으로 로그아웃 되었습니다..,');
 			}else if(success == 102){
 				alert('먼저 로그인을 하셔야합니다..,');
+			}else if(success == 103){
+				alert('글작성 하시려면 먼저 로그인을 하셔야합니다...')
 			}
     
     </script>
@@ -36,7 +38,7 @@
                         <td><input type="text" name="uid" placeholder="아이디를 입력" /></td>
                     </tr>
                     <tr>
-                        <td><img src="../img/login_ico_pw.png" alt="비밀번호"/></td>
+                        <td><img src="/Jboard1/img/login_ico_pw.png" alt="비밀번호"/></td>
                         <td><input type="password" name="pass" placeholder="비밀번호 입력" /></td>
                     </tr>
                 </table>
