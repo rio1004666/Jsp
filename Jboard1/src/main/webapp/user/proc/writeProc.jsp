@@ -28,8 +28,8 @@
 	
 	MultipartRequest mRequest = new MultipartRequest(request,path,maxSize,"utf-8",new DefaultFileRenamePolicy());
 	
-	// 이 라이브러리를 사용하면 파일쓰기 읽기 형식의 스트림전송방식을 써야합니다.
-	// 이제 파일이름을 바꾸어야한다 
+	//   이 라이브러리를 사용하면 파일쓰기 읽기 형식의 스트림전송방식을 써야합니다.
+	//   이제 파일이름을 바꾸어야한다 
 	
 	String uid = mRequest.getParameter("uid");
 	String title = mRequest.getParameter("title");
@@ -39,7 +39,10 @@
 	
 	 //  세션에   저장되어있다  로그인을 하였으면 
 	 
+	 
 	int seq = 0;		
+	 
+	 
 	 
 	try{
 		
@@ -51,7 +54,7 @@
 		
 		psmt.setString(1, title);
 		psmt.setString(2, content);
-		psmt.setString(3,  (fname == null) ? "0" : "1" ); // 파일이 있는 경우 1 없는 경우 0 
+		psmt.setInt(3,  (fname == null) ? 0 : 1 ); // 파일이 있는 경우 1 없는 경우 0 
 		psmt.setString(4, uid);
 		psmt.setString(5, regip);
 
@@ -108,5 +111,5 @@
 		}
 		
 	}
-	 response.sendRedirect("/Jboard1/list.jsp");
+	 response.sendRedirect("/Jboard1/list.jsp?pg=1");
 %>

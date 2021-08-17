@@ -56,7 +56,7 @@
 		
 		// 리다이렉트 => 페이지 전환 서버에서 jsp페이지 처리후 
 		
-		response.sendRedirect("/Jboard1/list.jsp");
+		response.sendRedirect("/Jboard1/list.jsp?pg=1");
 		
 	}else{
 		// 회원이 아닐 경우

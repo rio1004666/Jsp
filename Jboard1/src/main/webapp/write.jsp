@@ -1,13 +1,16 @@
 <%@page import="kr.co.jboard1.bean.MemberBean"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
+
 	// 글쓰기를 위해서 세션객체 확인해야한다 
 	MemberBean mb = (MemberBean) session.getAttribute("sessMember");
+
 	if(mb == null){
 		// 로그인을 하지 않고 list 페이지를 요청했을 때 => 에러코드도 같이 날려주자 
 		response.sendRedirect("/Jboard1/user/login.jsp?success=103");
 		return ; // 종료를 해줘야한다 
 	}
+
 %>
 <!DOCTYPE html>
 <html lang="en">

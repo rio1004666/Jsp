@@ -9,6 +9,16 @@ public class Sql {
 	// 전역변수에서는 사용되지 않는다.
 	public static final String SELECT_MEMBER = "SELECT * FROM `Jboard_member` WHERE `uid`=? AND `pass`=PASSWORD(?);";  // 암호화한 비밀번호를 그대로 매핑 
 	
+	// 게시판관련
+	
+	public static final String SELECT_COUNT_TOTAL = "SELECT COUNT(`seq`) FROM `Jboard_article`;";
+	
+	public static final String SELECT_ARTICLES = "SELECT a.*,b.nick FROM `Jboard_article` AS a "
+																							+ "JOIN `Jboard_member` AS b "
+			                                                                                 + "ON a.uid = b.uid "
+																							+ "ORDER BY `seq`  DESC  " 
+																							+  "LIMIT ?, 10;";
+	
 	public static final String SELECT_MAX_SEQ = "SELECT MAX(`seq`) FROM `Jboard_article`;";
 	public static final String SELECT_COUNT_UID  = "SELECT COUNT(`uid`) FROM `Jboard_member` WHERE `uid`=?;";
 	public static final String SELECT_COUNT_HP  = "SELECT COUNT(`hp`) FROM `Jboard_member` WHERE `hp`=?;";
