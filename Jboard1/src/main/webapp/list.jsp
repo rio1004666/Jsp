@@ -22,6 +22,12 @@
 	request.setCharacterEncoding("utf-8");
 	String pg = request.getParameter("pg");
 	
+
+	
+	
+	if(pg == null){
+		pg="1";
+	}
 	// 페이지 처리
 	int start = 0;
 	int currentPage = Integer.parseInt(pg); // 현재페이지 1번 2번....
@@ -46,8 +52,13 @@
 		groupEnd = lastPageNum;
 	}
 	
-	List<ArticleBean> articles = ArticleDao.getInstance().selectArticles(start);
 	
+	List<ArticleBean> articles = ArticleDao.getInstance().selectArticles(start);
+	for(ArticleBean article : articles){
+	int count = ArticleDao.getInstance().countComment(article.getSeq());
+		 ArticleDao.getInstance().updateComment(count,article.getSeq());
+	
+	}
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,10 +85,13 @@
                         <th>조회</th>
                     </tr>
                     <!-- 조합한 결과를 화면에 뿌리기위해 스크립트릿과 html문법을 같이 사용 -->
-                    <% for(ArticleBean article : articles){ %>
+                    <% 
+                    for(ArticleBean article : articles){
+                    	%>
+                  
                     <tr>
                         <td><%= pageStartNum-- %></td>
-                        <td><a href="/Jboard1/view.jsp"><%= article.getTitle() %></a>&nbsp;[<%= article.getComment() %>]</td>
+                        <td><a href="/Jboard1/view.jsp?seq=<%=article.getSeq()%>"><%= article.getTitle() %></a>&nbsp;[<%=article.getComment() %>]</td>
                         <td><%= article.getNick() %></td>
                         <td><%= article.getRdate().substring(2, 10) %></td>
                         <td><%= article.getHit() %></td>
@@ -110,7 +124,7 @@
             </div>
 
             <!-- 글쓰기 버튼 -->
-            <a href="/Jboard1/write.jsp" class="btnWrite">글쓰기</a>
+            <a href="/Jboard1/write.jsp?pg=<%=pg %>" class="btnWrite">글쓰기</a><!-- 여기서 pg값을 전달해주어야만 글쓰기페이지에서 파라미터로 받는다 -->
 
         </section>
     </div>    

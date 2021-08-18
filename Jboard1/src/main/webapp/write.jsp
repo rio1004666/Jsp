@@ -10,6 +10,8 @@
 		response.sendRedirect("/Jboard1/user/login.jsp?success=103");
 		return ; // 종료를 해줘야한다 
 	}
+	request.setCharacterEncoding("utf-8");
+	String pg = request.getParameter("pg");
 
 %>
 <!DOCTYPE html>
@@ -44,7 +46,7 @@
                         </tr>
                     </table>
                     <div>
-                        <a href="/Jboard1/list.jsp" class="btnCancel">취소</a>
+                        <a href="/Jboard1/list.jsp?pg=<%=pg%>" class="btnCancel">취소</a><!-- 3번페이지에서 글쓰기하려다 취소하면 다시 3번페이지로 -->
                         <input type="submit"  class="btnWrite" value="작성완료"/>
                     </div>
                 </form>

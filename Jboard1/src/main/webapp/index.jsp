@@ -13,5 +13,5 @@
 	  }else{
 		  	pageContext.forward("./list.jsp"); // 내부적으로 이동하는것이므로 상대경로로 이동한다 
 	  }
-
+		
 %>

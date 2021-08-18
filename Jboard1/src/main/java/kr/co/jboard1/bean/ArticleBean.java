@@ -14,7 +14,16 @@ public class ArticleBean {
 	private String uid;
 	private String regip;
 	private String rdate;
+	//추가필드
 	private String nick;
+	private FileBean fb; // 멤버변수가 겹치므로 파일빈하나를 만들고 여기로 들고온다 조인하기 위해서!!!
+	
+	public FileBean getFb() {
+		return fb;
+	}
+	public void setFb(FileBean fb) {
+		this.fb = fb;
+	}
 	
 	public int getSeq() {
 		return seq;
@@ -27,6 +36,9 @@ public class ArticleBean {
 	}
 	public void setParent(int parent) {
 		this.parent = parent;
+	}
+	public void setParent(String parent) { //  오버로드로 문자열도 받을수잇게 한다 단 결국 숫자가 들어가야하므로 integer사용
+		this.parent = Integer.parseInt(parent);
 	}
 	public int getComment() {
 		return comment;
