@@ -77,11 +77,21 @@ public class Sql {
 																							+"`rdate`=NOW();";
 	
 	
-	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public static final String UPDATE_ARTICLE_HIT ="UPDATE `Jboard_article` SET `hit` = `hit` + 1 "
 																								+"WHERE `seq` = ?;";
+	public static final String UPDATE_COMMENT_COUNT_PLUS  = "UPDATE `Jboard_article` SET `comment` = `comment` + 1 WHERE `seq`=?;";
+	public static final String UPDATE_COMMENT_COUNT_MINUS = "UPDATE `Jboard_article` SET `comment` = `comment` - 1 WHERE `seq`=?;";
 	
 	
-	public static final String UPDATE_COMMENT = "UPDATE `Jboard_article` SET `comment`=? WHERE `seq`=?;";
+	public static final String UPDATE_COMMENT = "UPDATE `Jboard_article` SET `content`=? WHERE `seq`=?";
+	
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public static final String DELETE_COMMENT = "DELETE FROM `Jboard_article` WHERE `seq`=?";
+	
+	
+	
+	
 	
 }

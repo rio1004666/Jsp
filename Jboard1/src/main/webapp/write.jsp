@@ -27,7 +27,7 @@
             <h3>글쓰기</h3>
             <article>
                <!-- enctype 으로 파일첨부  -->
-                <form action="/Jboard1/user/proc/writeProc.jsp" method="POST" enctype="multipart/form-data"> <!-- GET으로 하는경우 내용은 너무 장문이라 패스 길이제한도잇다  -->
+                <form action="/Jboard1/proc/writeProc.jsp" method="POST" enctype="multipart/form-data"> <!-- GET으로 하는경우 내용은 너무 장문이라 패스 길이제한도잇다  -->
                     <input type="hidden" name="uid"  value="<%=mb.getUid()%>"/> <!--  태그를 숨기기위해 hidden속성값 사용 -->
                     <table>
                         <tr>

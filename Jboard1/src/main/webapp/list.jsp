@@ -54,11 +54,8 @@
 	
 	
 	List<ArticleBean> articles = ArticleDao.getInstance().selectArticles(start);
-	for(ArticleBean article : articles){
-	int count = ArticleDao.getInstance().countComment(article.getSeq());
-		 ArticleDao.getInstance().updateComment(count,article.getSeq());
-	
-	}
+
+
 %>
 <!DOCTYPE html>
 <html lang="en">

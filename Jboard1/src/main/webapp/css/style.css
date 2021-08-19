@@ -231,6 +231,14 @@ body {}
 #board .btnDelete { padding: 8px; border: 1px solid #bebebe; background: #fdfdfd; color: #111;}
 #board .btnModify { padding: 8px; border: 1px solid #bebebe; background: #fdfdfd; color: #111;}
 #board .btnList   { padding: 8px; border: 1px solid #bebebe; background: #fdfdfd; color: #111;}
+#board.btnCommentDel{}
+#board.btnCommentModify{}
+#board.btnCommentCancel{display: none;}
+
+
+
+
+
 
 /* 寃뚯떆�뙋 - 湲�紐⑸줉 */
 #board.list {
