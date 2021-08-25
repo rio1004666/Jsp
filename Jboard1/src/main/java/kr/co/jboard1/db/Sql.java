@@ -1,35 +1,35 @@
 package kr.co.jboard1.db;
 
 public class Sql {
-	public static final String SELECT_TERMS = "SELECT * FROM `Jboard_terms`;"; // Å¬·¡½ºÀÌ¸§À¸·Î ÂüÁ¶ÇÏ°Ô²û static¼±¾ð °íÁ¤»ó¼ö 
-	// ¸Þ¸ð¸®¿¡ ÇÑ¹ø¿Ã·ÁÁ®¼­ °øÀ¯ ÇÏ´Â º¯¼ö 
-	// Àü¿ªº¯¼öÀÌ±â¶§¹®¿¡ Âß ¿¬°á  => ¸â¹öº¯¼öÀÚÃ¼´Â ±×³É ¼±¾ð¸¸ÇÏ±â¶§¹®¿¡ ¿¬»êÇÏÁö¾ÊÀ½!!!
-	//Áö¿ªº¯¼ö¸é += ´ëÀÔ¿¬»êÀÚ  => Áö¿ªº¯¼ö´Â ¿¬»êÀÚÃ¼¸¦ ¸¹ÀÌÇÔ 
-	// += ÀÌ·¸°Ô ´ëÀÔ¿¬»êÀÚ¸¦ »ç¿ëÇÏ¸é ¹®ÀåÀ» ³¡³»´Â ;¼¼¹ÌÄÝ·ÐÀÌ ºÙ±â¶§¹®¿§ 
-	// Àü¿ªº¯¼ö¿¡¼­´Â »ç¿ëµÇÁö ¾Ê´Â´Ù.
-	public static final String SELECT_MEMBER = "SELECT * FROM `Jboard_member` WHERE `uid`=? AND `pass`=PASSWORD(?);";  // ¾ÏÈ£È­ÇÑ ºñ¹Ð¹øÈ£¸¦ ±×´ë·Î ¸ÅÇÎ 
+	public static final String SELECT_TERMS = "SELECT * FROM `Jboard_terms`;"; // Å¬ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°Ô²ï¿½ staticï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+	// ï¿½Þ¸ð¸®¿ï¿½ ï¿½Ñ¹ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ 
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì±â¶§ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½  => ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½×³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±â¶§ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!!!
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ += ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½ï¿½ï¿½  => ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+	// += ï¿½Ì·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ;ï¿½ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½ ï¿½Ù±â¶§ï¿½ï¿½ï¿½ï¿½ 
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Â´ï¿½.
+	public static final String SELECT_MEMBER = "SELECT * FROM `Jboard_member` WHERE `uid`=? AND `pass`=PASSWORD(?);";  // ï¿½ï¿½È£È­ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½×´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	
-	//   °Ô½ÃÆÇ°ü·Ã
+	//   ï¿½Ô½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½
 	
-	public static final String SELECT_COUNT_TOTAL = "SELECT COUNT(`seq`) FROM `Jboard_article` WHERE `parent`=0;"; // ´ñ±ÛÁ¦¿ÜÇÏ°í °¹¼ö±¸ÇÑ´Ù!!!
+	public static final String SELECT_COUNT_TOTAL = "SELECT COUNT(`seq`) FROM `Jboard_article` WHERE `parent`=0;"; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½!!!
 	
 	
 	public static final String SELECT_ARTICLE = "SELECT * FROM `Jboard_article` AS a "
 																						  + "LEFT JOIN `Jboard_file` AS b "
 																						  + "ON a.seq = b.parent "
 																						  + "WHERE `seq`=?;";
-	// ÆÄÀÏÀÌ¾ø¾îµµ ¾ÆÆ¼Å¬Àº °¡Á®¿À±âÀ§ÇØ leftÁ¶ÀÎ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½îµµ ï¿½ï¿½Æ¼Å¬ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ leftï¿½ï¿½ï¿½ï¿½
 	public static final String SELECT_ARTICLES = "SELECT a.*,b.nick FROM `Jboard_article` AS a "
 																							+ "JOIN `Jboard_member` AS b "
 			                                                                                 + "ON a.uid = b.uid "
-																							+"WHERE `parent`=0 " // ´ñ±ÛÀº Á¦¿ÜÇÑ´Ù 
+																							+"WHERE `parent`=0 " // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½ 
 																							+ "ORDER BY `seq`  DESC  " 
 																							+  "LIMIT ?, 10;";
 	public static final String SELECT_COMMENTS ="SELECT a.*,b.nick FROM `Jboard_article` AS a "
 																									+ "JOIN `Jboard_member` AS b "
 																						            + "ON a.uid = b.uid "
 																									+"WHERE `parent`=? "
-																						            +"ORDER BY `seq` ASC;";// ´ñ±ÛÀº Á¦¿ÜÇÑ´Ù 
+																						            +"ORDER BY `seq` ASC;";// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½ 
 																							
 	public static final String SELECT_MAX_SEQ = "SELECT MAX(`seq`) FROM `Jboard_article`;";
 	public static final String SELECT_COUNT_UID  = "SELECT COUNT(`uid`) FROM `Jboard_member` WHERE `uid`=?;";
@@ -44,7 +44,7 @@ public class Sql {
 	
 	public static final String INSERT_MEMBER = "INSERT INTO `Jboard_member` SET "
 	 + "`uid`=?,"
-	 + "`pass`=PASSWORD(?),"// Å×ÀÌºíÇÊµå¸íÀ» ½á¾ßÇÑ´Ù ±×¸®°í ºñ¹Ð¹øÈ£¸¦ ¾ÏÈ£È­ÇØ¾ßÇÑ´Ù 
+	 + "`pass`=PASSWORD(?),"// ï¿½ï¿½ï¿½Ìºï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½ ï¿½×¸ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½È£È­ï¿½Ø¾ï¿½ï¿½Ñ´ï¿½ 
 	 + "`name`=?,"
 	 + "`nick`=?,"
 	 + "`email`=?,"
@@ -85,11 +85,14 @@ public class Sql {
 	
 	
 	public static final String UPDATE_COMMENT = "UPDATE `Jboard_article` SET `content`=? WHERE `seq`=?";
-	
+	public static final String UPDATE_ARTICLE = "UPDATE `Jboard_article` SET "
+																									+ "`title`=?,"
+																									+ "`content`=? "
+																									+ "WHERE `seq`=?";
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public static final String DELETE_COMMENT = "DELETE FROM `Jboard_article` WHERE `seq`=?";
-	
+	public static final String DELETE_ARTICLE = "DELETE FROM `Jboard_article` WHERE `seq`=?";
 	
 	
 	

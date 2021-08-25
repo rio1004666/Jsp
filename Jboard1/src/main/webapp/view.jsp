@@ -1,4 +1,3 @@
-  
 <%@page import="java.util.List"%>
 <%@page import="kr.co.jboard1.bean.MemberBean"%>
 <%@page import="kr.co.jboard1.bean.ArticleBean"%>
@@ -32,12 +31,6 @@
     <title>글보기</title>
     <link rel="stylesheet" href="/Jboard1/css/style.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-     <style>
-    	.btnCommentCancel {
-    		display : none;
-    	}
-    
-    </style>
     <script>
     	$(document).ready(function(){
     		
@@ -62,7 +55,6 @@
     				content = textarea.val(); 
     				
     				$(this).prev().css('display', 'none');
-    	
     				$(this).next().css('display', 'inline');
     				$(this).text('수정완료');
     				textarea.attr('readonly', false).focus();
@@ -90,7 +82,17 @@
     					success: function(data){
     						if(data.result == 1){
     							alert('댓글 수정이 성공 했습니다.');
-    							escapeModify(tag);
+    							
+    							// 수정모드 해제
+    							tag.text('수정');
+    							tag.prev().css('display', 'inline');
+    							tag.next().css('display', 'none');    			    			    							
+    			    			textarea.attr('readonly', true);
+    			    			textarea.css({
+    			    				'background': 'transparent',
+    			    				'outline': 'none'
+    			    			});
+    			    			
     						}else{
     							alert('댓글 수정이 실패 했습니다.');
     						}
@@ -103,32 +105,24 @@
     		// 댓글 수정 취소
     		$('.btnCommentCancel').click(function(e){
     			e.preventDefault();
-    			escapeModify($(this));    			
-    		});
-    		
-    		// 댓글 수정모드 해제
-    		function escapeModify(tag) {
-    			tag.prev().text('수정');
-    			tag.prev().prev().css('display', 'inline');
-    			tag.css('display', 'none');
+    			$(this).prev().text('수정');
+    			$(this).prev().prev().css('display', 'inline');
+    			$(this).css('display', 'none');
     			
-    			var textarea = tag.parent().prev();
+    			var textarea = $(this).parent().prev();
     			
     			textarea.val(content);
     			textarea.attr('readonly', true);
     			textarea.css({
     				'background': 'transparent',
     				'outline': 'none'
-    			});
-    		}
+    			});	
+    		});
     		
     		
     	});
     
     </script>
-    
-   
-    
 </head>
 <body>
     <div id="wrapper">
@@ -157,8 +151,8 @@
             </table>
             <div>
 	           	<% if(mb.getUid().equals(article.getUid())){ %>
-	                <a href="#" class="btnDelete">삭제</a>
-	                <a href="/Jboard1/modify.jsp" class="btnModify">수정</a>
+	                <a href="/Jboard1/proc/deleteProc.jsp?seq=<%= article.getSeq() %>" class="btnDelete">삭제</a>
+                	<a href="/Jboard1/modify.jsp?seq=<%= article.getSeq() %>" class="btnModify">수정</a>
 	            <% } %>
                 <a href="/Jboard1/list.jsp" class="btnList">목록</a>
             </div>  
@@ -179,8 +173,7 @@
 	                    <div>
 	                        <a href="/Jboard1/proc/deleteComment.jsp?parent=<%= comment.getParent() %>&seq=<%= comment.getSeq() %>" class="btnCommentDel">삭제</a>
 	                        <a href="#" class="btnCommentModify">수정</a>
-	                        <a href="#" class="btnCommentCancel" >취소</a>
-	                    	
+	                        <a href="#" class="btnCommentCancel">취소</a>
 	                    </div>
 	                    <% } %>
 	                </article>
