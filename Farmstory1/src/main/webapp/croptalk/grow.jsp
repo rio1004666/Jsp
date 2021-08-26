@@ -2,9 +2,9 @@
 <%@ include file="../_header.jsp" %>
 <%
 	String mode = request.getParameter("mode");
-// URI값을 얻어와서 페이지를 다르게 표현 
+	
 	if(mode == null){
-		mode = "l"; // 리스트로 간다 그냥 
+		mode = "l";
 	}
 %>
 <div id="sub" class="cate3">
@@ -27,16 +27,17 @@
             </nav>
 
             <!-- 내용 시작 -->
-          <%if(mode.equals("l")){ %>
-         		<jsp:include page="../board/list.jsp"/>
-			<%}else if(mode.equals("w")){ %>
-				<jsp:include page="../board/write.jsp"/>
-			<%} else if(mode.equals("v")) {%>
-				<jsp:include page="../board/view.jsp"/>
-			<% } else if(mode.equals("m")) {%>
-			<jsp:include page="../board/modify.jsp"/>
-			<% } %>
-
+            <% if(mode.equals("l")){ %>
+            	<jsp:include page="../board/list.jsp"/>
+            <% }else if(mode.equals("w")){ %>
+            	<jsp:include page="../board/write.jsp">
+            		<jsp:param name="uid" value="<%= mb.getUid() %>"/>
+            	</jsp:include>
+            <% }else if(mode.equals("v")){ %>
+            	<jsp:include page="../board/view.jsp"/>
+            <% }else if(mode.equals("m")){ %>
+            	<jsp:include page="../board/modify.jsp"/>
+            <% } %>
             <!-- 내용 끝 -->
         </article>
     </section>

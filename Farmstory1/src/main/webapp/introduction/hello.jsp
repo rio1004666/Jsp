@@ -6,7 +6,7 @@
                 <aside>
                     <img src="../img/sub_aside_cate1_tit.png" alt="팜스토리소개"/>
                     <ul>
-                        <li class="on"><a href="./hello.html">인사말</a></li>
+                        <li class="on"><a href="./hello.jsp">인사말</a></li>
                         <li><a href="/Farmstory1/introduction/direction.jsp">찾아오시는길</a></li>
                     </ul>
                 </aside>

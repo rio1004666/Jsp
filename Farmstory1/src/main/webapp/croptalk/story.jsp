@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../_header.jsp" %>
+<%@ include file="../_header.jsp" %> <!--  정적으로 페이지를 포함시킴  -->
 
 <%
 
@@ -31,15 +31,17 @@
             </nav>
 
             <!-- 내용 시작 -->
-            <%if(mode.equals("l")){ %>
-         		<jsp:include page="../board/list.jsp"/>
-			<%}else if(mode.equals("w")){ %>
-				<jsp:include page="../board/write.jsp"/>
-			<%} else if(mode.equals("v")) {%>
-				<jsp:include page="../board/view.jsp"/>
-			<% } else if(mode.equals("m")) {%>
-			<jsp:include page="../board/modify.jsp"/>
-			<% } %>
+           <% if(mode.equals("l")){ %>
+            	<jsp:include page="../board/list.jsp"/> <!--  동적으로 페이지를 포함시킴  -->
+            <% }else if(mode.equals("w")){ %>
+            	<jsp:include page="../board/write.jsp">
+            		<jsp:param name="uid" value="<%= mb.getUid() %>"/>
+            	</jsp:include>
+            <% }else if(mode.equals("v")){ %>
+            	<jsp:include page="../board/view.jsp"/>
+            <% }else if(mode.equals("m")){ %>
+            	<jsp:include page="../board/modify.jsp"/>
+            <% } %>
             <!-- 내용 끝 -->
         </article>
     </section>
