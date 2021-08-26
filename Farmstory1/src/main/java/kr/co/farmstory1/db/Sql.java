@@ -54,7 +54,7 @@ public class Sql {
 	
 	public static final String INSERT_MEMBER = "INSERT INTO `Jboard_member` SET "
 	 + "`uid`=?,"
-	 + "`pass`=PASSWORD(?),"// ���̺��ʵ���� ����Ѵ� �׸��� ��й�ȣ�� ��ȣȭ�ؾ��Ѵ� 
+	 + "`pass`=PASSWORD(?),"
 	 + "`name`=?,"
 	 + "`nick`=?,"
 	 + "`email`=?,"

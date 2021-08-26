@@ -1,7 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+
+
 <%@ include file="../_header.jsp" %>
+
 		<section id="user" class="register">
-			<form action="/Farmstory1/user/login.jsp" method="POST">
+			<form action="/Farmstory1/user/proc/registerProc.jsps" method="POST">
 				<table border="1">
 					<caption>사이트 이용정보 입력</caption>
 					<tr>
@@ -16,8 +19,8 @@
 					</tr>
 					<tr>
 						<td>비밀번호 확인</td>
-						<td><input type="password" name="pass2"
-							placeholder="비밀번호 확인 입력" /> <span class="resultPass"></span></td>
+						<td><input type="password" name="pass2" placeholder="비밀번호 확인 입력" /> 
+						<span class="resultPass"></span></td>
 					</tr>
 				</table>
 				<table border="1">
@@ -72,4 +75,6 @@
 				</div>
 			</form>
 		</section>
+		
+		
 	<%@ include file="../_footer.jsp" %>
