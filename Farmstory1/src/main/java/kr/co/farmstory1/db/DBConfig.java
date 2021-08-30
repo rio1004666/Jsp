@@ -16,7 +16,7 @@ public class DBConfig {
 			
 			} 
 			
-			String HOST = "jdbc:mysql://54.180.160.240:3306/rio100466";
+			String HOST = "jdbc:mysql://13.124.81.181:3306/rio100466";
 			String USER = "rio100466";
 			String PASS = "1234";
 			

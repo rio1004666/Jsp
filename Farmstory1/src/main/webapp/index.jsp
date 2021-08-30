@@ -5,10 +5,12 @@
 <%@ include file="./_header.jsp" %> <!--  정적으로 페이지를 포함시킴  -->
 
 <%
+
 		ArticleDao dao = ArticleDao.getInstance();
 		List<ArticleBean> latestGrow = dao.selectLatest("grow");
 		List<ArticleBean> latestSchool = dao.selectLatest("school");
 		List<ArticleBean> latestStory = dao.selectLatest("story");
+		
 %>
 <main>
     <div class="slider">
