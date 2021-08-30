@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
 <%
+	if(mb == null){
+	}
 	String mode = request.getParameter("mode");
 // URI값을 얻어와서 페이지를 다르게 표현 
 	if(mode == null){
@@ -24,17 +26,23 @@
                 </p>
             </nav>
 
-         	<% if(mode.equals("l")){ %>
+            <!-- 내용 시작 -->
+            <% if(mode.equals("l")){ %>
             	<jsp:include page="../board/list.jsp"/>
             <% }else if(mode.equals("w")){ %>
             	<jsp:include page="../board/write.jsp">
             		<jsp:param name="uid" value="<%= mb.getUid() %>"/>
             	</jsp:include>
             <% }else if(mode.equals("v")){ %>
-            	<jsp:include page="../board/view.jsp"/>
+            	<jsp:include page="../board/view.jsp">
+            		<jsp:param name="uid" value="<%= mb.getUid() %>"/>
+            	</jsp:include>
             <% }else if(mode.equals("m")){ %>
-            	<jsp:include page="../board/modify.jsp"/>
+            	<jsp:include page="../board/modify.jsp">
+            		<jsp:param name="uid" value="<%= mb.getUid() %>"/>
+            	</jsp:include>
             <% } %>
+            <!-- 내용 끝 -->
         </article>
     </section>
 </div>

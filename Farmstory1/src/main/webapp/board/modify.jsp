@@ -1,7 +1,14 @@
+<%@page import="kr.co.farmstory1.bean.MemberBean"%>
 <%@page import="kr.co.farmstory1.dao.ArticleDao"%>
 <%@page import="kr.co.farmstory1.bean.ArticleBean"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
+	MemberBean mb = (MemberBean) session.getAttribute("sessMember");
+	if(mb == null){
+		// 로그인을 하지 않고 list 페이지를 요청했을 때
+		response.sendRedirect("/Jboard1/user/login.jsp?success=102");
+		return;
+	}
 	String uri = request.getRequestURI();
 	String seq = request.getParameter("seq");
 	

@@ -1,14 +1,18 @@
+<%@page import="kr.co.farmstory1.bean.MemberBean"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.co.farmstory1.bean.ArticleBean"%>
 <%@page import="kr.co.farmstory1.dao.ArticleDao"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
+	MemberBean mb = (MemberBean) session.getAttribute("sessMember");
+	
 	request.setCharacterEncoding("utf-8");
 	
 	String uri = request.getRequestURI();
 	String uid = request.getParameter("uid");
 	String seq = request.getParameter("seq");
-	
+	System.out.println(uid);
+	System.out.println(seq);
 	ArticleDao dao = ArticleDao.getInstance();
 	
 	// 조회수 업데이트
@@ -110,6 +114,7 @@
 	});
 </script>
 <section id="board" class="view">
+		
     <h3>글보기</h3>
     <table>
         <tr>

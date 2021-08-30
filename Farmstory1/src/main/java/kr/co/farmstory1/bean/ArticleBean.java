@@ -16,7 +16,7 @@ public class ArticleBean {
 	private String rdate;
 	//�߰��ʵ�
 	private String nick;
-	private FileBean fb; // ��������� ��ġ�Ƿ� ���Ϻ��ϳ��� ����� ����� ���´� �����ϱ� ���ؼ�!!!
+	private FileBean fb; 
 	
 	public FileBean getFb() {
 		return fb;
