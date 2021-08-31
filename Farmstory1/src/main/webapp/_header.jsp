@@ -1,9 +1,23 @@
 <%@page import="kr.co.farmstory1.bean.MemberBean"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-
 	MemberBean mb = (MemberBean) session.getAttribute("sessMember");
 	
+	String success = request.getParameter("success");
+	String mode = request.getParameter("mode");
+	
+	// mode값은 기본적으로 l(list) 모드값으로 셋팅
+	if(mode == null){
+		mode = "l";
+	}
+
+	// 글쓰기, 글보기, 글수정은 반드시 로그인을 먼저 해야됨
+	if(mode.equals("w") || mode.equals("v") || mode.equals("m")){
+		if(mb == null){
+			response.sendRedirect("/Farmstory1/user/login.jsp?success=102");
+			return;
+		}
+	}
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,11 +26,18 @@
     <title>팜스토리</title>
     <link rel="stylesheet" href="/Farmstory1/css/style.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script src="/Farmstory1/js/zipcode.js"></script>
-	<script src="/Farmstory1/js/checkUser.js"></script>
-	<script src="/Farmstory1/js/validation.js"></script>
-	<script src="/Farmstory1/js/checkTerms.js"></script>
+    <script>
+    	var success = "<%= success %>";
+    	
+    	if(success == 100){
+    		alert('일치하는 회원이 없습니다.\n아이디, 비밀번호를 다시 확인해 주세요.');
+    	}else if(success == 101){
+    		alert('정상적으로 로그아웃이 되었습니다.');
+    	}else if(success == 102){
+    		alert('먼저 로그인을 하셔야 합니다.');
+    	}
+    </script>
+    
 </head>
 <body>
     <div id="wrapper">
@@ -24,13 +45,13 @@
             <a href="/Farmstory1" class="logo"><img src="/Farmstory1/img/logo.png" alt="로고"/></a>
             <p>
                 <a href="/Farmstory1">HOME |</a>
-                <%if(mb == null){ %> <!-- 로그인 안했을 경우 -->
+                <% if(mb == null){ %>
                 	<a href="/Farmstory1/user/login.jsp">로그인 |</a>
                 	<a href="/Farmstory1/user/terms.jsp">회원가입 |</a>
-                <%}else{ %> <!-- 로그인햇을 경우  로그아웃활성화 -->
-                	<a href="/Farmstory1/user/logout.jsp">로그아웃</a>
-                <%} %>
-                	<a href="/Farmstory1/community/qna.jsp">고객센터</a>
+                <% }else{ %>
+                	<a href="/Farmstory1/user/logout.jsp">로그아웃 |</a>
+                <% } %>
+                <a href="/Farmstory1/community/qna.jsp">고객센터</a>
             </p>
             <img src="/Farmstory1/img/head_txt_img.png" alt="3만원이상 무료배송, 팜카드 10%적립"/>
             <ul class="gnb">

@@ -228,6 +228,31 @@ public class ArticleDao {
 		return seq;
 	}
 	
+	public FileBean selectFile(String fseq) {
+		FileBean fb = null;
+		try {
+			Connection conn = DBConfig.getInstance().getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_FILE);
+			psmt.setString(1, fseq);
+			ResultSet rs = psmt.executeQuery();
+			if(rs.next()) {
+				fb = new FileBean();
+				fb.setFseq(rs.getInt(1));
+				fb.setParent(rs.getInt(2));;
+				fb.setOriName(rs.getString(3));
+				fb.setNewName(rs.getString(4));
+				fb.setDownload(rs.getInt(5));
+				fb.setRdate(rs.getString(6));
+			}
+			rs.close();
+			psmt.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+		return fb;
+	}
+	
 	public int insertArticle(ArticleBean article) {
 		try {
 			Connection conn = DBConfig.getInstance().getConnection();
@@ -357,6 +382,21 @@ public class ArticleDao {
 		return result;
 	}
 	
+	
+	public void updateFileDownload(String fseq) {
+		
+		try {
+			Connection conn = DBConfig.getInstance().getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_FILE_DOWNLOAD);
+			psmt.setString(1, fseq);
+			psmt.executeUpdate();
+			psmt.close();
+			conn.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 	public void deleteArticle(String seq) {
 		try {
 			Connection conn = DBConfig.getInstance().getConnection();

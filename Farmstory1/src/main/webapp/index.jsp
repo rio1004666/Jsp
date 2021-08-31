@@ -2,15 +2,13 @@
 <%@page import="java.util.List"%>
 <%@page import="kr.co.farmstory1.dao.ArticleDao"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="./_header.jsp" %> <!--  정적으로 페이지를 포함시킴  -->
-
+<%@ include file="./_header.jsp" %>
 <%
-
-		ArticleDao dao = ArticleDao.getInstance();
-		List<ArticleBean> latestGrow = dao.selectLatest("grow");
-		List<ArticleBean> latestSchool = dao.selectLatest("school");
-		List<ArticleBean> latestStory = dao.selectLatest("story");
-		
+	// 최신글 가져오기
+	ArticleDao dao = ArticleDao.getInstance();
+	List<ArticleBean> latestGrow   = dao.selectLatest("grow");
+	List<ArticleBean> latestSchool = dao.selectLatest("school");
+	List<ArticleBean> latestStory  = dao.selectLatest("story");
 %>
 <main>
     <div class="slider">
@@ -19,19 +17,15 @@
             <li><img src="./img/main_slide_img2.jpg" alt="슬라이더2"></li>
             <li><img src="./img/main_slide_img3.jpg" alt="슬라이더3"></li>
         </ul>  
-        
         <img src="./img/main_slide_img_tit.png" alt="사람과 자연을 사랑하는 팜스토리"/>
-
         <div class="banner">
             <img src="./img/main_banner_txt.png" alt="GRAND OPEN"/>
             <img src="./img/main_banner_tit.png" alt="팜스토리 오픈기념 30% 할인 이벤트"/>
             <img src="./img/main_banner_img.png" alt="과일"/>
         </div>
-
         <div class="float_banner">
             <img src="./img/float_banner_tit.png" alt="팜카트 신청시 10% 적립혜택"/>
         </div>
-
     </div>
     <div class="banner">
         <a href="#"><img src="./img/main_banner_sub1_tit.png" alt="오늘의 식단"/></a>
@@ -42,40 +36,39 @@
             <a href="/Farmstory1/croptalk/grow.jsp"><img src="./img/main_latest1_tit.png" alt="텃밭가꾸기"/></a>
             <img src="./img/main_latest1_img.jpg" alt="이미지"/>
             <table border="0">
-            <%for(ArticleBean article : latestGrow){%>
-                <tr>
-                    <td>></td>
-                    <td><a href="/Farmstory1/croptalk/grow.jsp?mode=v&seq=<%=article.getSeq()%>"><%=article.getTitle() %></a></td>
-                    <td><%=article.getRdate().substring(2,10) %></td>
-                </tr>
-              <%} %>
+            	<% for(ArticleBean article : latestGrow){ %>
+	                <tr>
+	                    <td>></td>
+	                    <td><a href="/Farmstory1/croptalk/grow.jsp?mode=v&seq=<%= article.getSeq() %>"><%= article.getTitle() %></a></td>
+	                    <td><%= article.getRdate().substring(2, 10) %></td>
+	                </tr>
+                <% } %>
             </table>
         </article>
         <article>
             <a href="/Farmstory1/croptalk/school.jsp"><img src="./img/main_latest2_tit.png" alt="귀농학교"/></a>
             <img src="./img/main_latest2_img.jpg" alt="이미지"/>
             <table border="0">
-                 <%for(ArticleBean article : latestSchool){%>
-                <tr>
-                    <td>></td>
-                    <td><a href="/Farmstory1/croptalk/school.jsp?mode=v&seq=<%=article.getSeq()%>"><%=article.getTitle() %></a></td>
-                    <td><%=article.getRdate().substring(2,10) %></td>
-                </tr>
-              <%} %>
-               
+                <% for(ArticleBean article : latestSchool){ %>
+	                <tr>
+	                    <td>></td>
+	                    <td><a href="/Farmstory1/croptalk/school.jsp?mode=v&seq=<%= article.getSeq() %>"><%= article.getTitle() %></a></td>
+	                    <td><%= article.getRdate().substring(2, 10) %></td>
+	                </tr>
+                <% } %>
             </table>
         </article>
         <article>
             <a href="/Farmstory1/croptalk/story.jsp"><img src="./img/main_latest3_tit.png" alt="농작물이야기"/></a>
             <img src="./img/main_latest3_img.jpg" alt="이미지"/>
             <table border="0">
-                 <%for(ArticleBean article : latestStory){%>
-                <tr>
-                    <td>></td>
-                    <td><a href="/Farmstory1/croptalk/story.jsp?mode=v&seq=<%=article.getSeq()%>"><%=article.getTitle() %></a></td>
-                    <td><%=article.getRdate().substring(2,10) %></td>
-                </tr>
-              <%} %>
+                <% for(ArticleBean article : latestStory){ %>
+	                <tr>
+	                    <td>></td>
+	                    <td><a href="/Farmstory1/croptalk/story.jsp?mode=v&seq=<%= article.getSeq() %>"><%= article.getTitle() %></a></td>
+	                    <td><%= article.getRdate().substring(2, 10) %></td>
+	                </tr>
+                <% } %>
             </table>
         </article>
     </div>

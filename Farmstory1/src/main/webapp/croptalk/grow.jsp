@@ -1,12 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
-<%
-	String mode = request.getParameter("mode");
-	
-	if(mode == null){
-		mode = "l";
-	}
-%>
+
 <div id="sub" class="cate3">
     <div><img src="../img/sub_top_tit3.png" alt="CROP TALK"/></div>
     <section>

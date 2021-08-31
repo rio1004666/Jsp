@@ -6,7 +6,7 @@
 	MemberBean mb = (MemberBean) session.getAttribute("sessMember");
 	if(mb == null){
 		// 로그인을 하지 않고 list 페이지를 요청했을 때
-		response.sendRedirect("/Jboard1/user/login.jsp?success=102");
+		response.sendRedirect("/Farmstory1/user/login.jsp?success=102");
 		return;
 	}
 	String uri = request.getRequestURI();

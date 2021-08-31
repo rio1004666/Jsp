@@ -24,7 +24,7 @@ $(document).ready(function(){
 		var uid = $(this).val();
 		
 		$.ajax({
-			url: '/Jboard1/user/proc/checkUid.jsp?uid='+uid,
+			url: '/Farmstory1/user/proc/checkUid.jsp?uid='+uid,
 			type: 'get',
 			dataType: 'json',
 			success: function(data){
@@ -88,7 +88,7 @@ $(document).ready(function(){
 		var nick = $(this).val();
 		
 		$.ajax({
-			url: '/Jboard1/user/proc/checkNick.jsp?nick='+nick,
+			url: '/Farmstory1/user/proc/checkNick.jsp?nick='+nick,
 			type: 'get',
 			dataType: 'json',
 			success: function(data){
@@ -115,7 +115,7 @@ $(document).ready(function(){
 		var email = $(this).val();
 		
 		$.ajax({
-			url: '/Jboard1/user/proc/checkEmail.jsp?email='+email,
+			url: '/Farmstory1/user/proc/checkEmail.jsp?email='+email,
 			type: 'get',
 			dataType: 'json',
 			success: function(data){
@@ -135,7 +135,7 @@ $(document).ready(function(){
 		var hp = $(this).val();
 		
 		$.ajax({
-			url: '/Jboard1/user/proc/checkHp.jsp?hp='+hp,
+			url: '/Farmstory1/user/proc/checkHp.jsp?hp='+hp,
 			type: 'get',
 			dataType: 'json',
 			success: function(data){

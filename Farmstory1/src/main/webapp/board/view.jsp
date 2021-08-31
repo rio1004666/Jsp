@@ -4,15 +4,14 @@
 <%@page import="kr.co.farmstory1.dao.ArticleDao"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	MemberBean mb = (MemberBean) session.getAttribute("sessMember");
-	
 	request.setCharacterEncoding("utf-8");
 	
 	String uri = request.getRequestURI();
+
+	
 	String uid = request.getParameter("uid");
 	String seq = request.getParameter("seq");
-	System.out.println(uid);
-	System.out.println(seq);
+
 	ArticleDao dao = ArticleDao.getInstance();
 	
 	// 조회수 업데이트
@@ -30,8 +29,6 @@
 			var result = confirm('정말 삭제 하시겠습니까?');
 			return result;
 		});
-		
-		
 		var content = '';
 		
 		// 댓글 수정
@@ -109,10 +106,17 @@
 				'outline': 'none'
 			});	
 		});
-		
-		
+		$('.btnCancel').click(function(){
+			var textarea = $(this).parent().prev();
+			textarea.val(content);		
+			textarea.text('')
+		});
 	});
 </script>
+<style>
+	*:focus { outline: 0; }
+</style>
+
 <section id="board" class="view">
 		
     <h3>글보기</h3>
@@ -125,15 +129,16 @@
         <tr>
             <td>첨부파일</td>
             <td>
-                <a href="#"><%= article.getFb().getOriName() %></a>
-                <span><%= article.getFb().getDownload() %>회 다운로드</span>
+                <a href="/Farmstory1/board/proc/download.jsp?fseq=<%=article.getFb().getFseq()%>&uri=<%=uri%>"><%= article.getFb().getOriName() %></a>
+                <!-- 파일 번호를 줘야 다운로드에서 그에 해당하는 원래이름과 새로운 이름 다운로드 횟수가 저장된다  -->
+                <span><%= article.getFb().getDownload()%>회 다운로드</span>
             </td>
         </tr>
         <% } %>
         <tr>
             <td>내용</td>
             <td>
-                <textarea name="content" readonly><%= article.getContent() %></textarea>
+                <textarea name="content"  readonly><%= article.getContent() %></textarea>
             </td>
         </tr>
     </table>
@@ -155,13 +160,13 @@
                  <span><%= comment.getNick() %></span>
                  <span><%= comment.getRdate().substring(2, 10) %></span>
              </span>
-             <textarea name="comment" readonly data-seq="<%= comment.getSeq() %>"><%= comment.getContent() %></textarea>
+             <textarea name="comment"  data-seq="<%= comment.getSeq() %>" readonly><%= comment.getContent() %></textarea>
              
              <% if(uid.equals(comment.getUid())){ %>
              <div>
                  <a href="/Farmstory1/board/proc/deleteCommentProc.jsp?parent=<%= comment.getParent() %>&seq=<%= comment.getSeq() %>&uri=<%= uri %>" class="btnCommentDel">삭제</a>
                  <a href="#" class="btnCommentModify">수정</a>
-                 <a href="#" class="btnCommentCancel">취소</a>
+                 <a href="#" class="btnCommentCancel" style="display:none">취소</a>
              </div>
              <% } %>
          </article>

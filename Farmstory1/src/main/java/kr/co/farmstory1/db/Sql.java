@@ -52,6 +52,12 @@ public class Sql {
 	
 	public static final String SELECT_MAX_SEQ = "SELECT MAX(`seq`) FROM `Jboard_article`;";
 	
+	
+	public static final String SELECT_FILE = "SELECT * FROM `Jboard_file` WHERE `fseq`=?;";
+	
+	
+	
+	
 	public static final String INSERT_ARTICLE = "INSERT INTO `Jboard_article` SET "
 												+ "`cate`=?,"
 												+ "`title`=?,"
@@ -84,6 +90,9 @@ public class Sql {
 	public static final String UPDATE_COMMENT_COUNT_MINUS = "UPDATE `Jboard_article` SET `comment` = `comment` - 1 WHERE `seq`=?;";
 	
 	public static final String UPDATE_COMMENT = "UPDATE `Jboard_article` SET `content`=? WHERE `seq`=?";
+	
+	
+	public static final String UPDATE_FILE_DOWNLOAD = "UPDATE `Jboard_file` SET `download` = `download` + 1 WHERE `fseq`=?;";
 	
 	public static final String DELETE_ARTICLE = "DELETE FROM `Jboard_article` WHERE `seq`=?";
 	public static final String DELETE_COMMENT = "DELETE FROM `Jboard_article` WHERE `seq`=?";

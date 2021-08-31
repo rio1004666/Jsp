@@ -4,9 +4,6 @@
 <%@page import="kr.co.farmstory1.dao.ArticleDao"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	MemberBean mb = (MemberBean) session.getAttribute("sessMember");
-	
-	
 	String uri = request.getRequestURI();
 	int begin = uri.lastIndexOf("/")+1;
 	int end   = uri.lastIndexOf(".");
@@ -60,7 +57,7 @@
             <% for(ArticleBean article : articles){ %>
             <tr>
                 <td><%= pageStartNum-- %></td>
-                <td><a href="<%= uri %>?mode=v&seq=<%= article.getSeq()%>&uid=<%=mb.getUid()%>"><%= article.getTitle() %></a>&nbsp;[<%= article.getComment() %>]</td>
+                <td><a href="<%= uri %>?mode=v&seq=<%= article.getSeq()%>"><%= article.getTitle() %></a>&nbsp;[<%= article.getComment() %>]</td>
                 <td><%= article.getNick() %></td>
                 <td><%= article.getRdate().substring(2, 10) %></td>
                 <td><%= article.getHit() %></td>

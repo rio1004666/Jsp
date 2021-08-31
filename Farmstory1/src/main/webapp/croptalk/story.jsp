@@ -1,16 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %> <!--  정적으로 페이지를 포함시킴  -->
-
-<%
-
-	String mode = request.getParameter("mode");
-	 // URI값을 얻어와서 페이지를 다르게 표현 
-
-	if(mode == null){
-		mode = "l"; // 리스트로 간다 그냥 
-	}
-	
-%>
 <div id="sub" class="cate3">
     <div><img src="../img/sub_top_tit3.png" alt="CROP TALK"/></div>
     <section>

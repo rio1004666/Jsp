@@ -1,12 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
-<%
-	String mode = request.getParameter("mode");
-// URI값을 얻어와서 페이지를 다르게 표현 
-	if(mode == null){
-		mode = "l"; // 리스트로 간다 그냥 
-	}
-%>
+
 <div id="sub" class="cate5">
     <div><img src="../img/sub_top_tit5.png" alt="COMMUNITY"/></div>
     <section>
@@ -35,7 +29,9 @@
             		<jsp:param name="uid" value="<%= mb.getUid() %>"/>
             	</jsp:include>
             <% }else if(mode.equals("v")){ %>
-            	<jsp:include page="../board/view.jsp"/>
+            	<jsp:include page="../board/view.jsp">
+            		<jsp:param name="uid" value="<%= mb.getUid() %>"/>
+            	</jsp:include>
             <% }else if(mode.equals("m")){ %>
             	<jsp:include page="../board/modify.jsp"/>
             <% } %>
