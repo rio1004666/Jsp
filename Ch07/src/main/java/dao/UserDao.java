@@ -18,7 +18,7 @@ public class UserDao {
 		return instance;
 	}
 	private UserDao() {} // 생성자를 외부에서 생성못하게 한다 
-	private final String HOST = "jdbc:mysql://13.124.81.181:3306/rio100466";
+	private final String HOST = "jdbc:mysql://54.180.160.240:3306/rio100466";
 	private final String USER = "rio100466";
 	private final String PASS = "1234";
 	
