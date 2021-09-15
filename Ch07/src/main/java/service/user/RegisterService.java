@@ -27,6 +27,9 @@ public class RegisterService implements CommonService{
 					vo.setAge(age);
 					// Database  처리 로직
 					UserDao.getInstance().insertUser(vo);
+					
+					///////
+					
 					return "redirect:/user/list.do"; // 컨트롤러가 받아서 리다이렉트를 수행하도록 값을 반환한다 => 문자열정보이다!!! 
 				}
 				

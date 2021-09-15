@@ -19,9 +19,8 @@ import model.CommonService;
 
 
 public class MainController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L; 
 	private Map<String, Object> instances = new HashMap<>();
-
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		// 최초 요청시 실행되는 컨트롤러 초기화 메서드
@@ -36,7 +35,9 @@ public class MainController extends HttpServlet {
 		
 		try {
 			FileInputStream fis = new FileInputStream(path);
+			
 			prop.load(fis);
+			
 			fis.close();
 			
 		}catch (Exception e) {
@@ -55,7 +56,6 @@ public class MainController extends HttpServlet {
 				
 				Class obj = Class.forName(v);
 				Object instance = obj.newInstance();
-				
 				instances.put(k, instance);
 				
 			}catch (Exception e) {
@@ -84,6 +84,7 @@ public class MainController extends HttpServlet {
 		CommonService instance = (CommonService) instances.get(key);
 		
 		// Service 객체 실행 후 결과 정보 받기
+		
 		String result = instance.requestProc(req, resp);
 		
 		if(result.startsWith("redirect:")) {

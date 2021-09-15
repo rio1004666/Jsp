@@ -10,6 +10,7 @@
 <body>
 			<h1>User 목록</h1>
 			<table border="1">
+			
 		<tr>
 			<td>아이디</td>
 			<th>이름</th>
@@ -17,6 +18,7 @@
 			<th>나이</th>
 			<th>관리</th>
 		</tr>
+		
 		<c:forEach var="user" items="${users}">
 		<tr>
 			<td>${user.getUid()}</td> 
