@@ -28,6 +28,9 @@ public class ArticleVo {
 	public void setSeq(int seq) {
 		this.seq = seq;
 	}
+	public void setSeq(String seq) {
+		this.seq = Integer.parseInt(seq);
+	}
 	public int getParent() {
 		return parent;
 	}

@@ -29,7 +29,7 @@
 	                    <tr>
 	                    	<!--  감소연산자가 안되면 그냥 감소시킨다  -->
 	                        <td>${pageStartNum = pageStartNum - 1}</td>
-	                        <td><a href="/Jboard2/view.do">${article.getTitle()}</a>&nbsp;[3]</td>
+	                        <td><a href="/Jboard2/view.do?seq=${article.seq}">${article.getTitle()}</a>&nbsp;[3]</td>
 	                        <td>${article.nick}</td>
 	                        <td>${article.rdate}</td>
 	                        <td>${article.hit}</td>

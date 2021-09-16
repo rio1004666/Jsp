@@ -10,6 +10,7 @@ import java.util.List;
 import kr.co.jboard2.db.DBConfig;
 import kr.co.jboard2.db.Sql;
 import kr.co.jboard2.vo.ArticleVo;
+import kr.co.jboard2.vo.FileVo;
 
 public class ArticleDao {
 	private static ArticleDao instance = new ArticleDao();
@@ -17,7 +18,46 @@ public class ArticleDao {
 		return instance;
 	}
 	private ArticleDao() {}
-	public void selectArticle() {}
+	public ArticleVo selectArticle(String seq) {
+		ArticleVo av = null;
+		FileVo fv = null;
+		try {
+			Connection conn = DBConfig.getInstance().getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_ARTICLE);
+			psmt.setString(1, seq);
+			ResultSet rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				av = new ArticleVo();
+				av.setSeq(rs.getInt(1));
+				av.setParent(rs.getInt(2));
+				av.setComment(rs.getInt(3));
+				av.setCate(rs.getString(4));
+				av.setTitle(rs.getString(5));
+				av.setContent(rs.getString(6));
+				av.setFile(rs.getInt(7));
+				av.setHit(rs.getInt(8));
+				av.setUid(rs.getString(9));
+				av.setRegip(rs.getString(10));
+				av.setRdate(rs.getString(11));
+				
+				fv = new FileVo();
+				fv.setFseq(rs.getInt(12));
+				fv.setParent(rs.getInt(13));
+				fv.setOriName(rs.getString(14));
+				fv.setNewName(rs.getString(15));
+				fv.setDownload(rs.getInt(16));
+				fv.setRdate(rs.getString(17));
+				av.setFb(fv);
+			}
+			rs.close();
+			psmt.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return av;
+	}
 	public List<ArticleVo> selectArticles(int start){
 
 		List<ArticleVo> articles = new ArrayList<>();
@@ -72,10 +112,6 @@ public class ArticleDao {
 		}
 		
 	}
-	
-	
-	
-	
 	public int insertArticle(ArticleVo av) {
 		
 		try {
@@ -95,8 +131,7 @@ public class ArticleDao {
 		}
 		return selectMaxSeq(); // 가장 최근글의 번호를 가져온다 
 	}
-	
-	
+
 	public int selectCountTotal() {
 		int total = 0;
 		try {
@@ -115,7 +150,6 @@ public class ArticleDao {
 		return total;
 	}
 
-
 	public int selectMaxSeq() {
 		int seq = 0;
 		
@@ -132,10 +166,7 @@ public class ArticleDao {
 		
 		return seq;
 	}
-	
-	
-	
-	
+
 	public void updateArticle() {}
 	public void deleteArticle() {}
 }
