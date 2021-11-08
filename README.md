@@ -80,11 +80,11 @@ Ch02. JSP 조건문 실습하기
 	<%if(num1 > num2){ %>
 		<h4>num1 은 num2보다 크다 .</h4>		
 	<%}else if(num2 > num3){ %>
-	<h4>num2는 num3보다 크다 </h4>
+		<h4>num2는 num3보다 크다 </h4>
 	<%}else if(num3 > num4){ %>
-	<h4>num3은 num4보다 크다 </h4>
+		<h4>num3은 num4보다 크다 </h4>
 	<%}else{%>
-	<h4> num4가 가장크다 	</h4>
+		<h4> num4가 가장크다 	</h4>
 	<% }	%>
 ```
 Ch03. JSP 반복문 실습하기 
@@ -113,21 +113,19 @@ Ch03. JSP 반복문 실습하기
 	<table border="3">
 		<tr>
 			<%for(int i=2;i<=9;i++){%>
-			<td>
-			<% out.print(i+"단"); %>
-			</td>
+				<td><% out.print(i+"단"); %></td>
 			<%} %>
 		</tr>
 		<%
-		for (int i = 1; i < 10; i++) {
+			for (int i = 1; i < 10; i++) {
 		%>
 		<tr>
 			<%
-			for (int j = 2; j < 10; j++) {
+				for (int j = 2; j < 10; j++) {
 			%>
-			<td><%=j%> x <%=i%> = <%=i * j%></td>
+					<td><%=j%> x <%=i%> = <%=i * j%></td>
 			<%
-			}
+				}
 			%>
 			<%
 			}
