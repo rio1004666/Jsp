@@ -1,6 +1,6 @@
 ### Jsp 
 #Jsp수업예제
-Ch1. Jsp 페이지 출력하기
+Ch01. Jsp 페이지 출력하기
 ```
 greeting.jsp
 
@@ -25,7 +25,7 @@ welcome.jsp
 	<a href="./welcome.jsp">welcome</a>
 	<a href="./greeting.jsp">greeting</a>
 ```
-Ch2. JSP스크립트릿(Scriptlet)실습하기
+Ch02. JSP스크립트릿(Scriptlet)실습하기
 
 #스크립트릿(Scriptlet)
 
