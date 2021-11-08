@@ -60,3 +60,31 @@ Ch2. JSP스크립트릿(Scriptlet)실습하기
 	<h4>var3 : <%= var3 %></h4>
 	<h4>var4 : <%= var4 %></h4>
 ```
+Ch02. JSP 조건문 실습하기 
+```
+	<h3> 2. 조건문 실습하기 </h3>
+
+	<%
+		int num1 = 1;
+		int num2 = 2;
+		int num3 = 3;
+		int num4 = 4;
+		if(num1 > 0){
+			out.print("<h4> num1은 0보다 크다. </h4>");
+		}
+		
+		
+	
+	%>
+	
+	<%if(num1 > num2){ %>
+		<h4>num1 은 num2보다 크다 .</h4>		
+	<%}else if(num2 > num3){ %>
+	<h4>num2는 num3보다 크다 </h4>
+	<%}else if(num3 > num4){ %>
+	<h4>num3은 num4보다 크다 </h4>
+	<%}else{%>
+	<h4> num4가 가장크다 	</h4>
+	<% }	%>
+```
+
