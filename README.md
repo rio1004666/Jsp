@@ -167,3 +167,43 @@ Ch02. JSP Include 지시자 실습하기
 	
 	<%@ include file="./inc/_footer.jsp" %>
 ```
+Ch03. JSP - Request객체
+```
+	<h4> request 내장 객체 정보 </h4>
+	<!--  클래스 AAA = new 클래스() -->
+	<!--  new 연산 없이 싱글톤으로 바로 사용가능한 내장객체  -->
+	<%
+		/// pageContext / request / response / session 이 4가지는 익혀야한다 
+		// Client 가 요청 할때 생성되는 객체 request 는 Client다 
+		// 사용자의 정보를 가지고 있다 (정보덩어리가 객체는 무수히  많은 정보가 있다 )
+		// 브라우저 종료 / 주소 /,,,,
+	%>
+	<table border="1">
+		
+		<tr>
+			<td>헤더정보</td>	<!-- get으로 시작하는 메서드 => 게터 -->
+			<td><%=request.getHeader("User-Agent") %>
+		</tr>
+		<tr>
+			<td>통신규약</td>	<!-- http 프로토콜 - 클라이언트가 서버에 요청을하면 응답받고 끊김  -->
+			<td><%=request.getProtocol() %>
+		</tr>
+		<tr>
+			<td>서버이름</td>	<!-- 서버주소 : 아마존서버  -->
+			<td><%=request.getServerName() %>
+		</tr>
+		<tr>
+			<td>요청주소</td>	<!--  전체 현재 경로  -->
+			<td><%=request.getRequestURI() %>
+		</tr>
+		<tr>
+			<td>요청경로</td>	<!--  포트까지가 도메인 url + path :경로 (uri) -->
+			<td><%=request.getRequestURI() %>
+		</tr>
+			<tr>
+			<td>클라이언트 시스템 IP</td>	 <!-- 클라이언트의 ip번호  -->
+			<td><%=request.getRemoteAddr() %>
+		</tr>
+	
+	</table>
+```
