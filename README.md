@@ -256,7 +256,7 @@ session 내장객체
 - 최초 요청에서 부터 마지막 요청까지의 전체 시간
 - 클라이언트에서 서버로 요청할 때 서버에 기록되는 클라이언트 정보 테이블 (Session Table)
 - 서버는 각 클라이언트에 대한 고유번호(Session ID)를 부여 
-- 
+
 ```
 	<h1>4.session 내장객체 실습하기 </h1>
 	<form action="./proc/sessionProc.jsp" method="post">
@@ -269,6 +269,33 @@ session 내장객체
 			<tr>
 				<td>비밀번호</td>
 				<td><input type="password" name="pass"></td>
+				<!-- input은 사용자로부터 데이터를 입력받음  -->
+			</tr>
+			<tr>
+				<td colspan="2" align="right"><input type="submit" value="로그인">
+					<!--  사용자로부터 데이터를 입력받아서 보낸다 --></td>
+			</tr>
+		</table>
+	</form>
+```
+Ch03. JSP Cookie 실습
+Cookie
+ - 클라이언트와 서버간의 식별를 위해 사용되는 조각 파일 
+ - 쿠키는 서버에서 생성하고 클라이언트에 저장
+ - 클라이언트는 전송된 쿠키를 보관, 해당 서버로 다시 요청 할때 보관된 쿠키를 같이 전송 
+
+```
+	<h3> 5. Cookie 실습하기 </h3>
+	<form action="./proc/cookieProc.jsp" method="post">
+		<!--  주소에 데이터가 붙어서가는 것을 파라미터 이 전송방식을 get방식 (키 와 밸류형식으로 전송) -->
+		<table border="1">
+			<tr>
+				<td>아이디</td>
+				<td><input type="text" name="id"></td>
+			</tr>
+			<tr>
+				<td>비밀번호</td>
+				<td><input type="password" name="pw"></td>
 				<!-- input은 사용자로부터 데이터를 입력받음  -->
 			</tr>
 			<tr>
