@@ -485,35 +485,18 @@ Ch06. JSP 표현언어(Expression Language) 내장객체 실습
 
 Ch07. JSP MODEL2 MVC 실습
 
-```
+Model -      비지니스 로직과 데이터베이 연동을 담당하는 영역입니다. 
+View -       실제로 화면에 보여지는 영역입니다.
+Controller - 뷰와 모델의 중간다리 역할을 하는 영역입니다. 
 
-< list.jsp >
+Model 영역
 
-소스코드 설명: jstl 라이브러리를 사용하여 request내장객체에 저장된 사용자정보들을 리스트로 출력합니다.
+DAO(Data Access Object)
 
-	<h1>User 목록</h1>
-	<table border="1">
-			
-		<tr>
-			<td>아이디</td>
-			<th>이름</th>
-			<th>휴대폰</th>
-			<th>나이</th>
-			<th>관리</th>
-		</tr>
-		
-		<c:forEach var="user" items="${users}">     <!-- request객체명은 생략가능하고 안에 담긴 객체명을 하나씩 불러와서 해당 정보를 출력합니다.-->
-		<tr>
-			<td>${user.getUid()}</td> 
-			<th>${user.name}</th>
-			<th>${user.hp}</th>
-			<th>${user.age}</th> <!-- 메서드 사용하지않고 직접참조가능  -->
-			<td>
-				<a href="/Ch07/user/modify.do?uid=${user.uid}"> 수정 </a>  <!-- 수정페이지로 가기 위해서 사용자의 아이디가 필요하므로 매개변수로 전달합니다.-->
-				<a href="/Ch07/user/delete.do?uid=${user.uid}"> 삭제 </a>  <!-- 삭제를 요청하기위해서 그 회원의 아이디를 매개변수로 전달합니다.-->
-			</td> <!-- get방식으로 주소에다가 데이터를 실어보낸다 -->
-		</tr>
-		</c:forEach>
-	</table>
+데이터베이스에 접근하기 위한 객체를 싱글톤 패턴으로 생성하였습니다.
+com.mysql.jdbc.driver 클래스를 통해 db연결을 하도록 설정하였고, 
+컨트롤러에서 전달한 VO(관계형데이터베이스 레코드에 대응되는 객체)를 
+데이터베이스(MySQL)에 저장하도록 하였습니다.
 
-```
+Model
+
