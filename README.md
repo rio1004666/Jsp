@@ -9,4 +9,18 @@ greeting.jsp
 	<a href="./welcome.jsp">welcome</a>
 	<a href="./greeting.jsp">greeting</a>
 ```
+```
+hello.jsp
+	<h1>Hello World!</h1>
+	<a href="./hello.jsp">hello</a>
+	<a href="./welcome.jsp">welcome</a>
+	<a href="/Ch01/greeting.jsp">greeting</a>
+```
+```
+welcome.jsp
+	<h1>welcome jsp!</h1>
+	<a href="./hello.jsp">hello</a>
+	<a href="./welcome.jsp">welcome</a>
+	<a href="./greeting.jsp">greeting</a>
+```
 
