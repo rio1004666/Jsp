@@ -383,6 +383,7 @@ Ch04. Jsp Insert 실습
 	response.sendRedirect("../4_2_Select.jsp");
 	%>
 ```
+
 Ch05. Jsp JSON 데이터 실습
 
 json 데이터
@@ -400,4 +401,76 @@ json 데이터
 	out.print(jsonData);
 	// html css 자바스크립트 모두 지원 
 	// json형태로 출력된다 위의 contenttype이 json
+```
+
+Ch05. Jsp JSON 데이터 실습
+
+```
+	String user1 = "{\"uid\":\"A101\",\"name\":\"김유신\",\"hp\":\"010-1234-1111\",\"age\":25}";
+	String user2 = "{\"uid\":\"A102\",\"name\":\"김춘추\",\"hp\":\"010-1234-2222\",\"age\":33}";
+	String user3 = "{\"uid\":\"A103\",\"name\":\"장보고\",\"hp\":\"010-1234-3333\",\"age\":45}";
+	String user4 = "{\"uid\":\"A104\",\"name\":\"강감찬\",\"hp\":\"010-1234-4444\",\"age\":19}";
+	String user5 = "{\"uid\":\"A105\",\"name\":\"이순신\",\"hp\":\"010-1234-5555\",\"age\":22}";
+	
+	
+	String[] users = {user1,user2,user3,user4,user5};
+	// List<String> userlist = Arrays.asList(users);	
+	// 편의성과 확장성을 위해 라이브러리 사용 
+	out.print(Arrays.deepToString(users));
+```
+
+Ch05. Jsp JSON 데이터 실습
+
+```
+	<%@page import="com.google.gson.Gson"%>
+	<%@page import="java.util.List"%>
+	<%@page import="java.util.ArrayList"%>
+	<%@page import="bean.MemberBean"%>
+	<%@page import="java.sql.ResultSet"%>
+	<%@page import="java.sql.Statement"%>
+	<%@page import="java.sql.Connection"%>
+	<%@page import="java.sql.DriverManager"%>
+	<%@ page contentType="application/json;charset=UTF-8"
+		pageEncoding="UTF-8"%>
+	<%
+	String host = "jdbc:mysql://54.180.160.240:3306/rio100466";
+	String user = "rio100466";
+	String pass = "1234";
+	List<MemberBean> members = new ArrayList<>();
+	try {
+		//1단계
+		Class.forName("com.mysql.jdbc.Driver");
+
+		//2단계
+		Connection conn  = DriverManager.getConnection(host,user,pass);
+		//3단계
+		Statement stmt = conn.createStatement();
+		//4단계
+		String sql = "SELECT * FROM MEMBER";
+		ResultSet rs = stmt.executeQuery(sql); // 쿼리문을 날려서 조회결과를 가지고 있는 객체 
+		//5단계
+		while(rs.next()){
+			MemberBean mb = new MemberBean();
+			mb.setUid(rs.getString(1));
+			mb.setName(rs.getString(2));
+			mb.setHp(rs.getString(3));
+			mb.setPos(rs.getString(4));
+			mb.setDep(rs.getInt(5));
+			mb.setRdate(rs.getString(6));
+			members.add(mb);
+		}
+		//6단계
+		rs.close();
+		stmt.close();
+		conn.close();
+
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	Gson gson = new Gson();
+	String jsonData = gson.toJson(members);
+	out.print(jsonData);
+	%>
+
 ```
