@@ -489,6 +489,8 @@ Ch07. JSP MODEL2 MVC 실습
 
 < list.jsp >
 
+소스코드 설명: jstl 라이브러리를 사용하여 request내장객체에 저장된 사용자정보들을 리스트로 출력합니다.
+
 	<h1>User 목록</h1>
 	<table border="1">
 			
@@ -500,52 +502,18 @@ Ch07. JSP MODEL2 MVC 실습
 			<th>관리</th>
 		</tr>
 		
-		<c:forEach var="user" items="${users}">
+		<c:forEach var="user" items="${users}">     <!-- request객체명은 생략가능하고 안에 담긴 객체명을 하나씩 불러와서 해당 정보를 출력합니다.-->
 		<tr>
 			<td>${user.getUid()}</td> 
 			<th>${user.name}</th>
 			<th>${user.hp}</th>
 			<th>${user.age}</th> <!-- 메서드 사용하지않고 직접참조가능  -->
 			<td>
-				<a href="/Ch07/user/modify.do?uid=${user.uid}"> 수정 </a> 
-				<a href="/Ch07/user/delete.do?uid=${user.uid}"> 삭제 </a>
+				<a href="/Ch07/user/modify.do?uid=${user.uid}"> 수정 </a>  <!-- 수정페이지로 가기 위해서 사용자의 아이디가 필요하므로 매개변수로 전달합니다.-->
+				<a href="/Ch07/user/delete.do?uid=${user.uid}"> 삭제 </a>  <!-- 삭제를 요청하기위해서 그 회원의 아이디를 매개변수로 전달합니다.-->
 			</td> <!-- get방식으로 주소에다가 데이터를 실어보낸다 -->
 		</tr>
 		</c:forEach>
 	</table>
 
-< register.jsp >
-
-	<h1>User 등록 </h1>
-	<form action="/Ch07/user/register.do" method="post">
-	<table border="1">
-		<tr>
-			<td>아이디</td>
-			<td><input type="text" name="uid"></td>
-
-		</tr>
-		<tr>
-			<td>이름</td>
-			<td><input type="text" name="name"></td>
-
-		</tr>
-		<tr>
-			<td>휴대폰</td>
-			<td><input type="text" name="hp"></td>
-
-		</tr>
-		<tr>
-			<td>나이</td>
-			<td><input type="text" name="age"></td>
-
-		</tr>
-		<tr>
-
-			<td colspan="2" align="right">
-			<input type="submit" value="등록하기">
-			</td>
-
-		</tr>
-	</table>
-	</form>
 ```
