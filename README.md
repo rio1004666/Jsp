@@ -728,3 +728,51 @@ Ch06. JSP 표현언어(Expression Language) 실습
 		application name: ${applicationScope.name}<br/> <!-- 톰캣 서버 어플리케이션 자체에서 생성되는 객체  -->
 	</p>
 ```
+Ch06. JSP 표현언어(Expression Language) 연산자 실습
+
+```
+	<h3>표현언어 연산자</h3>
+	<%
+		
+		String str1 = null;
+		String str2 = "";
+		String str3 = "Hello";
+		int num1 = 1;
+		int num2 = 2;
+		request.setAttribute("str1", str1);
+		request.setAttribute("str2", str2);
+		request.setAttribute("str3", str3);
+		request.setAttribute("num1", num1);
+		request.setAttribute("num2", num2);
+		
+	%>
+	<p>
+		num1 + num2 = ${num1+num2}<br/>
+		num1 - num2 = ${num1-num2}<br/>
+		num1 * num2 = ${num1*num2}<br/>
+		num1 / num2 = ${num1/num2}<br/>
+		
+		
+		<!-- 비교연산자  -->
+		num1 > num2 = ${num1 > num2}<br/>	
+		num1 < num2 = ${num1 < num2}<br/>	
+		num1 >= num2 = ${num1 >= num2}<br/>	
+		num1 <= num2 = ${num1 <= num2}<br/>	
+		num1 == num2 = ${num1 == num2}<br/>	
+		num1 != num2 = ${num1  != num2}<br/>	
+		
+		num1 gt num2 = ${num1 gt num2}<br/>	
+		num1 lt num2 = ${num1 lt num2}<br/>	
+		num1 ge num2 = ${num1 ge num2}<br/>	
+		num1 le num2 = ${num1 le num2}<br/>	
+		num1 eq num2 = ${num1 eq num2}<br/>	
+		num1 ne num2 = ${num1  ne num2}<br/>	
+	
+		empty str1 = ${empty str1} <br/>
+		empty str2 = ${empty str2} <br/>
+		empty str3 = ${empty str3}  <br/>
+		str3 eq "Hello" = ${str3 eq "Hello" } <br/>
+		str3 eq "Welcome" = ${str3 eq "Welcome" } <br/>
+	</p>
+
+```
