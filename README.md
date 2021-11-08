@@ -35,3 +35,28 @@ Ch2. JSP스크립트릿(Scriptlet)실습하기
 #표현식 (Expression)
 
   - 스크립트릿에서 선언된 변수를 참조하여 출력하는 출력구문  
+```
+	<%
+	// Scriptlet(프로그래밍 역역)
+	
+		int var1 = 1;
+		
+		boolean var2 = true;
+		
+		double var3 = 3.14;
+		
+		float var4 = 4.667f;
+		
+		String str = "hello";
+		
+		out.print("<h4> var1 :" + var1 + "</h4>"); // 바로 out객체 
+		out.print("<h4> var2: " + var2 + "</h4>");
+		
+		
+	%>
+	
+	<%-- 표현식 출력 --%>
+	
+	<h4>var3 : <%= var3 %></h4>
+	<h4>var4 : <%= var4 %></h4>
+```
