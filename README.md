@@ -208,20 +208,24 @@ Ch03. JSP - Request객체
 	</table>
 ```
 Ch03. JSP - Response 내장객체
+
+response 내장객체
+
+- Client 에서 Server 로 요청한 처리 결과를 응답해주는 객체 
+- Server 에서 Client로 전송되는 객체 
+
+redirect 기능 
+
+-Server에서 Client로 다시 요청을 명령하는 response객체의 기능 
+나는 정보가 없으니까 다른데로 가 
+- 최종 요청에 대한 주소가 반영 
+
+forward 기능 
+
+- 시스템에서 페이지를 요청하는 pageContext 객체의 기능 
+- 최초 요청에 대한 주소가 반영 
+- 
 ```
-	response 내장객체 
-	- Client 에서 Server 로 요청한 처리 결과를 응답해주는 객체 
-	- Server 에서 Client로 전송되는 객체 
-		redirect 기능 
-		
-	-Server에서 Client로 다시 요청을 명령하는 response객체의 기능 
-	나는 정보가 없으니까 다른데로 가 
-	- 최종 요청에 대한 주소가 반영 
-	
-	forward 기능 
-	- 시스템에서 페이지를 요청하는 pageContext 객체의 기능 
-	- 최초 요청에 대한 주소가 반영 
-	 --%>
 	 <h3>2.response 내장객체 실습하기 </h3>
 	 <a href="../proc/redirectPage.jsp"> 리다이렉트 페이지 요청하기 </a>
 ```
@@ -246,10 +250,13 @@ forward 기능
 	<a href="./proc/forwardPage.jsp">포워드페이지요청</a>
 ```
 Ch03. JSP Session 내장객체
+
 session 내장객체
+
 - 최초 요청에서 부터 마지막 요청까지의 전체 시간
 - 클라이언트에서 서버로 요청할 때 서버에 기록되는 클라이언트 정보 테이블 (Session Table)
 - 서버는 각 클라이언트에 대한 고유번호(Session ID)를 부여 
+- 
 ```
 	<h1>4.session 내장객체 실습하기 </h1>
 	<form action="./proc/sessionProc.jsp" method="post">
