@@ -133,3 +133,23 @@ Ch03. JSP 반복문 실습하기
 		</tr>
 	</table>
 ```
+Ch03. JSP 클래스 실습하기 
+```
+	<h3>4. JSP 클래스 실습하기</h3>
+	<%
+	
+	
+	Account kb = new Account("국민은행", "101-121-1111", "김유신", 10000);
+	Account wr = new Account("우리은행", "101-121-2222", "김춘추", 30000);
+	
+	
+	kb.deposit(5000);
+	kb.withdraw(8000);
+	kb.show(out); // out을 넣어버린다 scriptlet객체 
+	wr.deposit(50000);
+	wr.withdraw(7000);
+	wr.show(out);
+	
+	
+	%>
+```
