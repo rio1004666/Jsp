@@ -207,7 +207,7 @@ Ch03. JSP - Request객체
 	
 	</table>
 ```
-Ch03. JSP - Response객체
+Ch03. JSP - Response 내장객체
 ```
 	response 내장객체 
 	- Client 에서 Server 로 요청한 처리 결과를 응답해주는 객체 
@@ -224,4 +224,47 @@ Ch03. JSP - Response객체
 	 --%>
 	 <h3>2.response 내장객체 실습하기 </h3>
 	 <a href="../proc/redirectPage.jsp"> 리다이렉트 페이지 요청하기 </a>
+```
+Ch03. JSP - pageContext 내장객체
+```
+	<h3> 3.pageContext 내장객체 실습</h3>
+	<!--  jsp 내부 페이지객체 pageContext =>forward기능 시스템 (서버)내에서 이동  -->
+	<!--  
+	pageContext 내장객체
+	-JSP 페이지에 대해 1:1 로 연결된 객체로 JSP 페이지당 하나의 pageContext객체가 생성 
+	- 주요 기능은 페이지의 흐름제어(forward)에 사용 
+	forward 기능 
+	- 시스템에서 페이지를 요청하는 pageContext객체의 기능 
+	- 최초 요청에 대한 주소가 반영, cf) redirect 는 최종 요청에 대한 주소가 반영 
+	- 서버는 물리적인 시스템, 톰캣 설치, 톰캣 환경, 톰캣 객체 -> application
+	- 객체는 유무형 형체 동작등을 프로그래밍 코드로 표현 
+	
+	 -->
+	<a href="./proc/forwardPage.jsp">포워드페이지요청</a>
+```
+Ch03. JSP Session 내장객체
+session 내장객체
+-최초 요청에서 부터 마지막 요청까지의 전체 시간
+- 클라이언트에서 서버로 요청할 때 서버에 기록되는 클라이언트 정보 테이블 (Session Table)
+- 서버는 각 클라이언트에 대한 고유번호(Session ID)를 부여 
+```
+	<h1>4.session 내장객체 실습하기 </h1>
+	<form action="./proc/sessionProc.jsp" method="post">
+		<!--  주소에 데이터가 붙어서가는 것을 파라미터 이 전송방식을 get방식 (키 와 밸류형식으로 전송) -->
+		<table border="1">
+			<tr>
+				<td>아이디</td>
+				<td><input type="text" name="uid"></td>
+			</tr>
+			<tr>
+				<td>비밀번호</td>
+				<td><input type="password" name="pass"></td>
+				<!-- input은 사용자로부터 데이터를 입력받음  -->
+			</tr>
+			<tr>
+				<td colspan="2" align="right"><input type="submit" value="로그인">
+					<!--  사용자로부터 데이터를 입력받아서 보낸다 --></td>
+			</tr>
+		</table>
+	</form>
 ```
