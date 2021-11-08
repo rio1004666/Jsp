@@ -876,4 +876,102 @@ Ch06. JSTL(Java Standards Tag Library)  실습
 	<p>문자열 인덱스: ${f:indexOf(hello, "e")}</p>
 
 ```
+Ch07. JSP MODEL2 MVC 실습
 
+```
+
+< list.jsp >
+
+	<h1>User 목록</h1>
+	<table border="1">
+			
+		<tr>
+			<td>아이디</td>
+			<th>이름</th>
+			<th>휴대폰</th>
+			<th>나이</th>
+			<th>관리</th>
+		</tr>
+		
+		<c:forEach var="user" items="${users}">
+		<tr>
+			<td>${user.getUid()}</td> 
+			<th>${user.name}</th>
+			<th>${user.hp}</th>
+			<th>${user.age}</th> <!-- 메서드 사용하지않고 직접참조가능  -->
+			<td>
+				<a href="/Ch07/user/modify.do?uid=${user.uid}"> 수정 </a> 
+				<a href="/Ch07/user/delete.do?uid=${user.uid}"> 삭제 </a>
+			</td> <!-- get방식으로 주소에다가 데이터를 실어보낸다 -->
+		</tr>
+		</c:forEach>
+	</table>
+	
+< modify.jsp >
+
+	<h1>User 수정</h1>
+	<form action="/Ch07/user/modify.do" method="post">
+	<table border="1">
+		<tr>
+			<td>아이디</td>
+			<td><input type="text" name="uid" readonly value="${user.uid}"></td>
+			<!-- 아이디는 수정을 못하게하는것 속성은 readonly -->
+		</tr>
+		<tr>
+			<td>이름</td>
+			<td><input type="text" name="name" value="${user.name}"></td>
+
+		</tr>
+		<tr>
+			<td>휴대폰</td>
+			<td><input type="text" name="hp" value="${user.hp}"></td>
+
+		</tr>
+		<tr>
+			<td>나이</td>
+			<td><input type="text" name="age" value="${user.age}"></td>
+
+		</tr>
+		<tr>
+			<td colspan="2" align="right">
+			<input type="submit" value="수정하기">
+			</td>
+		</tr>
+	</table>
+	</form>
+	
+< register.jsp >
+
+	<h1>User 등록 </h1>
+	<form action="/Ch07/user/register.do" method="post">
+	<table border="1">
+		<tr>
+			<td>아이디</td>
+			<td><input type="text" name="uid"></td>
+
+		</tr>
+		<tr>
+			<td>이름</td>
+			<td><input type="text" name="name"></td>
+
+		</tr>
+		<tr>
+			<td>휴대폰</td>
+			<td><input type="text" name="hp"></td>
+
+		</tr>
+		<tr>
+			<td>나이</td>
+			<td><input type="text" name="age"></td>
+
+		</tr>
+		<tr>
+
+			<td colspan="2" align="right">
+			<input type="submit" value="등록하기">
+			</td>
+
+		</tr>
+	</table>
+	</form>
+```
