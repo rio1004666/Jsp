@@ -2,29 +2,19 @@
 #Jsp수업예제
 Ch01. Jsp 페이지 출력하기
 ```
-greeting.jsp
+< greeting.jsp >
+
+
+소스코드 설명: 해당하는 jsp페이지로 이동하는 a태그입니다. 
 
   	<h1>Greeting!!!</h1>
+
 	<a href="./hello.jsp">hello</a>
 	<a href="./welcome.jsp">welcome</a>
 	<a href="./greeting.jsp">greeting</a>
+	
 ```
-```
-hello.jsp
 
-	<h1>Hello World!</h1>
-	<a href="./hello.jsp">hello</a>
-	<a href="./welcome.jsp">welcome</a>
-	<a href="/Ch01/greeting.jsp">greeting</a>
-```
-```
-welcome.jsp
-
-	<h1>welcome jsp!</h1>
-	<a href="./hello.jsp">hello</a>
-	<a href="./welcome.jsp">welcome</a>
-	<a href="./greeting.jsp">greeting</a>
-```
 Ch02. JSP스크립트릿(Scriptlet)실습하기
 
 #스크립트릿(Scriptlet)
@@ -35,9 +25,12 @@ Ch02. JSP스크립트릿(Scriptlet)실습하기
 #표현식 (Expression)
 
   - 스크립트릿에서 선언된 변수를 참조하여 출력하는 출력구문  
+  
 ```
+소스코드 설명: 스크립트릿에서 선언된 변수들은 out내장객체로 출력가능하고 html태그에서 참조할 수 있습니다.
+
 	<%
-	// Scriptlet(프로그래밍 역역)
+		// Scriptlet(프로그래밍 역역)
 	
 		int var1 = 1;
 		
@@ -49,22 +42,25 @@ Ch02. JSP스크립트릿(Scriptlet)실습하기
 		
 		String str = "hello";
 		
-		out.print("<h4> var1 :" + var1 + "</h4>"); // 바로 out객체 
+		out.print("<h4> var1 :" + var1 + "</h4>"); // out 내장객체 
 		out.print("<h4> var2: " + var2 + "</h4>");
 		
 		
 	%>
 	
-	<%-- 표현식 출력 --%>
+	<%-- 표현식 출력 --%>   
 	
 	<h4>var3 : <%= var3 %></h4>
 	<h4>var4 : <%= var4 %></h4>
 ```
-Ch02. JSP 조건문 실습하기 
-```
-	<h3> 2. 조건문 실습하기 </h3>
 
-	<%
+Ch02. JSP 조건문 실습하기 
+
+```
+소스코드 설명: 스크립트릿에서는 자바문법 조건문을 사용할 수 있고 html문서에서도 똑같이 스크립트릿안에서 사용할 수 있습니다. 
+
+	<h3> 2. 조건문 실습하기 </h3>
+	<%       // Scriptlet(프로그래밍 역역)
 		int num1 = 1;
 		int num2 = 2;
 		int num3 = 3;
@@ -72,11 +68,7 @@ Ch02. JSP 조건문 실습하기
 		if(num1 > 0){
 			out.print("<h4> num1은 0보다 크다. </h4>");
 		}
-		
-		
-	
 	%>
-	
 	<%if(num1 > num2){ %>
 		<h4>num1 은 num2보다 크다 .</h4>		
 	<%}else if(num2 > num3){ %>
@@ -87,77 +79,44 @@ Ch02. JSP 조건문 실습하기
 		<h4> num4가 가장크다 	</h4>
 	<% }	%>
 ```
-Ch02. JSP 반복문 실습하기 
-```
-	<h3>3.JSP 반복문 실습하기</h3>
 
-	<h3>for</h3>
-	<%
+Ch02. JSP 반복문 실습하기 
+
+```
+소스코드 설명: 스크립트릿에서 사용하는 반복문도 html문서에서 스크립트릿 형식으로 사용할 수 있습니다.
+
+	<%   // Scriptlet(프로그래밍 역역)
 	for (int i = 1; i <= 5; i++) {
 		out.print("<h4> i :" + i + "<h4>");
 	}
 	%>
 	<h3>while</h3>
 	<%
-	int k = 1;
-	while (k <= 5) {
+		int k = 1;
+		while (k <= 5) {
 	%>
 	<p>
 		k : <%=k%>
 	</p>
 	<%
-	k++;
-	}
-	%>
-	<h3>구구단표</h3>
-	<table border="3">
-		<tr>
-			<%for(int i=2;i<=9;i++){%>
-				<td><% out.print(i+"단"); %></td>
-			<%} %>
-		</tr>
-		<%
-			for (int i = 1; i < 10; i++) {
-		%>
-		<tr>
-			<%
-				for (int j = 2; j < 10; j++) {
-			%>
-					<td><%=j%> x <%=i%> = <%=i * j%></td>
-			<%
-				}
-			%>
-			<%
-			}
-			%>
-		</tr>
-	</table>
+		k++;
+	}%>
 ```
 Ch02. JSP 클래스 실습하기 
 ```
-	<h3>4. JSP 클래스 실습하기</h3>
 	<%
-	
-	
-	Account kb = new Account("국민은행", "101-121-1111", "김유신", 10000);
-	Account wr = new Account("우리은행", "101-121-2222", "김춘추", 30000);
-	
-	
-	kb.deposit(5000);
-	kb.withdraw(8000);
-	kb.show(out); // out을 넣어버린다 scriptlet객체 
-	wr.deposit(50000);
-	wr.withdraw(7000);
-	wr.show(out);
-	
-	
+		Account kb = new Account("국민은행", "101-121-1111", "김유신", 10000);
+
+		kb.deposit(5000);
+		kb.withdraw(8000);
+		kb.show(out); // out을 넣어버린다 scriptlet객체 
 	%>
 ```
+
 Ch02. JSP Include 지시자 실습하기  
+
 ```
-	<h3> 5. JSP Include 지시자 </h3>
-	
-	<%--%는 지시자이다.!는 선언문이다(쓰지않음) @는 모듈화된 프로그램을 임폴트 기능  --%>
+	<%--  %는 지시자이다.!는 선언문이다(쓰지않음) @는 모듈화된 프로그램을 임폴트 기능  --%>
 	
 	<%@ include file="./inc/_header.jsp" %>
 	
@@ -167,7 +126,9 @@ Ch02. JSP Include 지시자 실습하기
 	
 	<%@ include file="./inc/_footer.jsp" %>
 ```
+
 Ch03. JSP - Request객체
+
 ```
 	<h4> request 내장 객체 정보 </h4>
 	<!--  클래스 AAA = new 클래스() -->
@@ -179,7 +140,6 @@ Ch03. JSP - Request객체
 		// 브라우저 종료 / 주소 /,,,,
 	%>
 	<table border="1">
-		
 		<tr>
 			<td>헤더정보</td>	<!-- get으로 시작하는 메서드 => 게터 -->
 			<td><%=request.getHeader("User-Agent") %>
@@ -310,6 +270,8 @@ Cookie
 Ch04. Jsp Insert 실습
 
 ```
+소스코드 설명: 이 페이지에서 form양식으로 데이터를 proc페이지에 전달할 것입니다.
+
 	<h4>User 등록</h4>
 	<form action="./proc/insertProc.jsp" method="post">
 	<table border="1">
@@ -344,12 +306,8 @@ Ch04. Jsp Insert 실습
 	</form>
 ```
 ```
-< insertProc.jsp >
+소스코드 설명: Request 내장객체에 저장된 정보들을 받아서 연동된 데이터베이스에 저장합니다
 
-	<%@page import="java.sql.Statement"%>
-	<%@page import="java.sql.DriverManager"%>
-	<%@page import="java.sql.Connection"%>
-	<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 	<%
 	request.setCharacterEncoding("UTF-8");
 	String uid = request.getParameter("uid");
@@ -403,77 +361,6 @@ json 데이터
 	// json형태로 출력된다 위의 contenttype이 json
 ```
 
-Ch05. Jsp JSON 데이터 실습
-
-```
-	String user1 = "{\"uid\":\"A101\",\"name\":\"김유신\",\"hp\":\"010-1234-1111\",\"age\":25}";
-	String user2 = "{\"uid\":\"A102\",\"name\":\"김춘추\",\"hp\":\"010-1234-2222\",\"age\":33}";
-	String user3 = "{\"uid\":\"A103\",\"name\":\"장보고\",\"hp\":\"010-1234-3333\",\"age\":45}";
-	String user4 = "{\"uid\":\"A104\",\"name\":\"강감찬\",\"hp\":\"010-1234-4444\",\"age\":19}";
-	String user5 = "{\"uid\":\"A105\",\"name\":\"이순신\",\"hp\":\"010-1234-5555\",\"age\":22}";
-	
-	
-	String[] users = {user1,user2,user3,user4,user5};
-	// List<String> userlist = Arrays.asList(users);	
-	// 편의성과 확장성을 위해 라이브러리 사용 
-	out.print(Arrays.deepToString(users));
-```
-
-Ch05. Jsp JSON 데이터 실습
-
-```
-	<%@page import="com.google.gson.Gson"%>
-	<%@page import="java.util.List"%>
-	<%@page import="java.util.ArrayList"%>
-	<%@page import="bean.MemberBean"%>
-	<%@page import="java.sql.ResultSet"%>
-	<%@page import="java.sql.Statement"%>
-	<%@page import="java.sql.Connection"%>
-	<%@page import="java.sql.DriverManager"%>
-	<%@ page contentType="application/json;charset=UTF-8"
-		pageEncoding="UTF-8"%>
-	<%
-	String host = "jdbc:mysql://54.180.160.240:3306/rio100466";
-	String user = "rio100466";
-	String pass = "1234";
-	List<MemberBean> members = new ArrayList<>();
-	try {
-		//1단계
-		Class.forName("com.mysql.jdbc.Driver");
-
-		//2단계
-		Connection conn  = DriverManager.getConnection(host,user,pass);
-		//3단계
-		Statement stmt = conn.createStatement();
-		//4단계
-		String sql = "SELECT * FROM MEMBER";
-		ResultSet rs = stmt.executeQuery(sql); // 쿼리문을 날려서 조회결과를 가지고 있는 객체 
-		//5단계
-		while(rs.next()){
-			MemberBean mb = new MemberBean();
-			mb.setUid(rs.getString(1));
-			mb.setName(rs.getString(2));
-			mb.setHp(rs.getString(3));
-			mb.setPos(rs.getString(4));
-			mb.setDep(rs.getInt(5));
-			mb.setRdate(rs.getString(6));
-			members.add(mb);
-		}
-		//6단계
-		rs.close();
-		stmt.close();
-		conn.close();
-
-
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
-	Gson gson = new Gson();
-	String jsonData = gson.toJson(members);
-	out.print(jsonData);
-	%>
-
-```
 Ch05. Jsp AJAX 실습
 
 AJAX(Asychronous Jacascript And Xml)
@@ -554,108 +441,8 @@ AJAX(Asychronous Jacascript And Xml)
 </html>
 ```
 
-Ch05. Jsp AJAX 실습
 
-```
-	 <script>
-
-		$(document).ready(function(){
-			$('button').click(function(){
-				/// 데이터 요청하기
-				// html에서는 자동으로 table에 tbody를 삽입합니다.
-				var table = $('table > tbody'); // 테이블 객체 생성 DOM객체!! 문서 객체 모델 
-				$.ajax({
-					url:'./5_3_json.jsp',
-					type:'get',
-					dataType:'json',
-					success:function(data){ // 통신에 성공한다면 처리할 로직이 여기에 들어간다 받아온 데이터를 가지고 
-						// []리스트형식으로 data에 들어온다 
-						for(var i=0; i < data.length;i++){
-							//alert(data[i].name);
-							table.append('<tr></tr>'); // 따끈따근한 tr객체를 생성하고 (태그를 동적으로 생성)
-							 // 마지막 자식 tr즉 이제 막 생성된 tr객체!!!
-							 // tr문서객체의 : 마지막 자식 객체를 찾아서 추가한다 append 동적으로 태그 생성 
-							table.find('tr:last-child').append('<td>'+data[i].uid + '</td>');
-							table.find('tr:last-child').append('<td>'+data[i].name + '</td>');
-							table.find('tr:last-child').append('<td>'+data[i].hp + '</td>');
-							table.find('tr:last-child').append('<td>'+data[i].pos + '</td>');
-							table.find('tr:last-child').append('<td>'+data[i].dep + '</td>');
-							table.find('tr:last-child').append('<td>'+data[i].rdate+'</td>');
-							// for을 순회하면서 한번 데이터 셋팅이 끝나면 또 tr을 생성해서 그 tr객체에 또 데이터 삽입
-						}
-					}
-				// 동적태그를 append시킬것이다!!!! 없는 태그를 생성하며 데이터 붙인다 
-				});
-
-			});
-
-		});
-	 </script>
-```
-Ch05. Jsp AJAX 연습
-
-```
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script>
-		$(document).ready(function(){
-			$('#b1').click(function(){	
-				var query = {name:$("#in").val()};
-
-				$.ajax({
-					url: './ex07-03Proc.jsp',
-					type: 'POST',
-					data: query,
-					success:function(data){ // data는 json형태일수도있고 문자열일 수도 있고 객체 리스트형태일 수도 있다 
-
-						if( data.name == 1 ){ //이거 안됨....	
-							$('#result').text("관리자님 어서오세요");
-						}
-						else if( data.name == 0){
-
-							$('#result').text("회원님 어서오세요");
-						}
-
-
-					}
-				});
-
-			});
-		});
-	</script>
-	</head>
-
-	<body>
-
-		<div>이름</div></br>
-		<input id="in" name="name" type="text" placeholder="이름을 입력하세요"/></br>
-		<button id="b1">처리</button>
-		<div id="result"></div>
-	</body>
-	</html>
-
-```
-```
-
-< ex07-03Proc.jsp >
-
-	<%@page import="com.google.gson.Gson"%>
-	<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-	<%
-		request.setCharacterEncoding("utf-8");
-		String name = request.getParameter("name");
-		String result = "";
-		if(name.equals("김개동")){
-			result = "1";
-		}
-		else if(name.equals("홍길동")){
-			result = "0";
-		}
-		out.print(result);
-	%>
-```
-
-Ch06. Jsp 표현언어 실습
+Ch06. JSP 표현언어(Expression Language) 기본 실습
 
 ```
 	<c:set var="name" value="홍길동"/>
@@ -677,40 +464,7 @@ Ch06. Jsp 표현언어 실습
 	</c:forEach>
 ```
 
-Ch06. JSP 표현언어(Expression Language) 실습
-
-```
-	<!-- Model1 과 Model2과 Spring이 있는데 이제 Model2랑 Spring 주로  쓰인다 Spring을 사용하기 위해 Model1과 Model2를 알아야한다  -->
-	
-	<!--  개발방식 !!!! 이 다르다  -->
-	<h3>1.  표현 언어 </h3>
-	<%
-		String name = "홍길동";
-		int num1 =  1;
-		int num2 = 2;
-		// 표현식으로 출력하기 위해 JSP 내장객체로 저장 
-		pageContext.setAttribute("name", name);
-		request.setAttribute("num1", num1);
-		session.setAttribute("num2", num2);
-	%>
-	
-	<h4>표현식</h4>
-	<p>
-		name : <%= name %> <br/>
-		num1 : <%= num1 %> <br/>
-		num2: <%= num2 %> <br/>
-	</p>
-	<h4>표현언어 출력</h4>
-	<p>
-		name : ${name} <br/> <!-- name앞에 내장객체가 생략되어있음 -->
-		num1 :  ${num1} <br/>
-		num2:  ${num2} <br/>
-		num1 + num2 = ${num1+num2}
-	</p>
-
-```
-
-Ch06. JSP 표현언어(Expression Language) 실습
+Ch06. JSP 표현언어(Expression Language) 내장객체 실습
 
 ```
 	<h3> 표현언어 내장객체 </h3>
@@ -728,154 +482,7 @@ Ch06. JSP 표현언어(Expression Language) 실습
 		application name: ${applicationScope.name}<br/> <!-- 톰캣 서버 어플리케이션 자체에서 생성되는 객체  -->
 	</p>
 ```
-Ch06. JSP 표현언어(Expression Language) 연산자 실습
 
-```
-	<h3>표현언어 연산자</h3>
-	<%
-		
-		String str1 = null;
-		String str2 = "";
-		String str3 = "Hello";
-		int num1 = 1;
-		int num2 = 2;
-		request.setAttribute("str1", str1);
-		request.setAttribute("str2", str2);
-		request.setAttribute("str3", str3);
-		request.setAttribute("num1", num1);
-		request.setAttribute("num2", num2);
-		
-	%>
-	<p>
-		num1 + num2 = ${num1+num2}<br/>
-		num1 - num2 = ${num1-num2}<br/>
-		num1 * num2 = ${num1*num2}<br/>
-		num1 / num2 = ${num1/num2}<br/>
-		
-		
-		<!-- 비교연산자  -->
-		num1 > num2 = ${num1 > num2}<br/>	
-		num1 < num2 = ${num1 < num2}<br/>	
-		num1 >= num2 = ${num1 >= num2}<br/>	
-		num1 <= num2 = ${num1 <= num2}<br/>	
-		num1 == num2 = ${num1 == num2}<br/>	
-		num1 != num2 = ${num1  != num2}<br/>	
-		
-		num1 gt num2 = ${num1 gt num2}<br/>	
-		num1 lt num2 = ${num1 lt num2}<br/>	
-		num1 ge num2 = ${num1 ge num2}<br/>	
-		num1 le num2 = ${num1 le num2}<br/>	
-		num1 eq num2 = ${num1 eq num2}<br/>	
-		num1 ne num2 = ${num1  ne num2}<br/>	
-	
-		empty str1 = ${empty str1} <br/>
-		empty str2 = ${empty str2} <br/>
-		empty str3 = ${empty str3}  <br/>
-		str3 eq "Hello" = ${str3 eq "Hello" } <br/>
-		str3 eq "Welcome" = ${str3 eq "Welcome" } <br/>
-	</p>
-
-```
-Ch06. JSTL(Java Standards Tag Library)  실습
-
-```
-	<h3>JSTL 실습하기</h3>
-	<%
-	   // 변수 생성 및 출력 
-		String str = "Hello";
-		out.print("<p>str : " + str  + "</p>");
-		
-		int num1 = 1;
-		int num2 = 2;
-		int num3 = 3;
-		
-		
-		if(num1 < num2){
-			out.print("<p>num1은 num2보다 작다.</p>");
-		}
-		if(num1 > num2){
-			out.print("<p>num1은 num2보다 크다.</p>");
-		}else{
-			out.print("<p>num1은 num2보다 작다.</p>");
-		}
-		if(num1  > num2){
-			out.print("<p>num1은 num2보다 크다.</p>");
-		}else if(num2 > num3){
-			out.print("<p>num2은 num3보다 크다.</p>");
-		}else{
-			out.print("<p>num3이 가장 크다.</p>");
-		}
-		for(int i=1; i<=5;i++){
-			out.print("<p>"+i+".Hello JSTL</p>");
-		}
-		String people[] = {"김유신","김춘추","장보고","강감찬","이순신"};
-		for(String person: people){
-			out.print("<em>"+person+ "</em>, ");
-		}
-		int sum =0;
-		for(int k=1;k<=10;k++){
-			sum += k;
-		}
-		out.print("<p> 1부터 10까지 합 : " + sum + "</p>");
-		String hello = "Hello Korea";
-		out.print("<p> 문자열길이 : "+  hello.length()+"</p>");
-		out.print("<p> 문자열 자르기 : "+  hello.substring(6,11)+"</p>");
-		out.print("<p> 문자열 교체 :  "+  hello.replace("Korea", "Busan")+"</p>");
-		out.print("<p> 문자열 인덱스 : "+  hello.indexOf("e")+"</p>");
-	%>
-	<h4>JSTL 표현</h4>
-	<!-- 변수선언  -->
-	<c:set var="str" value="Hello"/> <!-- 이제 jsp의 스크립트릿 쓰지않고 태그로 표현해야한다  -->
-	<p> str :  ${str}</p>
-	<c:set var="num1" value="1"/> <!--  타입은 신경쓰지 않아도 된다  -->
-	<c:set var="num2" value="2"/>
-	<c:set var="num3" value="3"/>
-	<!-- 조건문 -->
-	<c:if test="${num1 lt num2}">
-			<p>num1은 num2보다 작다.</p>
-	</c:if>
-	<c:choose>
-		<c:when test="${num1 gt num2}">
-			<p>num1은 num2보다 크다.</p>
-		</c:when>
-		<c:otherwise>
-			<p>num1은 num2보다 작다.</p>
-		</c:otherwise>
-	</c:choose>
-	
-	
-	<c:choose>
-		<c:when test="${num1 gt num2}">
-			<p>num1은 num2보다 크다.</p>
-		</c:when>
-		<c:when test="${num2 gt num3}">
-			<p>num2은 num3보다 크다.</p>
-		</c:when>
-		<c:otherwise>
-			<p>num3이 가장 크다.</p>
-		</c:otherwise>
-	</c:choose>
-	<!-- 반복문 -->
-	<c:forEach var="i" begin="1" end="5">
-		<p>${i}.Hello JSTL!</p>
-	</c:forEach>
-	<c:set var="people">김유신,김춘추,장보고,강감찬,이순신</c:set> <!-- 배열선언 -->
-	<c:forEach var="person" items="${people}"> <!-- 배열을 표현하는 items속성 -->
-		<em>${person}</em>,
-	</c:forEach>
-	<c:set var="sum"  value="0"></c:set>
-	<c:forEach var="k"  begin="1" end="10">
-		<c:set var="sum" value="${sum+k}"></c:set>
-	</c:forEach>
-	<p>1부터 10까지 합:${sum}</p>
-	<!-- 문자열 처리 -->
-	<c:set var="hello" value="Hello Korea"/>
-	<p>문자열 길이: ${f:length(hello)}</p>
-	<p>문자열 자르기: ${f:substring(hello,6,11)}</p>
-	<p>문자열 길이: ${f:replace(hello,"Korea","Busan")}</p>
-	<p>문자열 인덱스: ${f:indexOf(hello, "e")}</p>
-
-```
 Ch07. JSP MODEL2 MVC 실습
 
 ```
@@ -906,40 +513,7 @@ Ch07. JSP MODEL2 MVC 실습
 		</tr>
 		</c:forEach>
 	</table>
-	
-< modify.jsp >
 
-	<h1>User 수정</h1>
-	<form action="/Ch07/user/modify.do" method="post">
-	<table border="1">
-		<tr>
-			<td>아이디</td>
-			<td><input type="text" name="uid" readonly value="${user.uid}"></td>
-			<!-- 아이디는 수정을 못하게하는것 속성은 readonly -->
-		</tr>
-		<tr>
-			<td>이름</td>
-			<td><input type="text" name="name" value="${user.name}"></td>
-
-		</tr>
-		<tr>
-			<td>휴대폰</td>
-			<td><input type="text" name="hp" value="${user.hp}"></td>
-
-		</tr>
-		<tr>
-			<td>나이</td>
-			<td><input type="text" name="age" value="${user.age}"></td>
-
-		</tr>
-		<tr>
-			<td colspan="2" align="right">
-			<input type="submit" value="수정하기">
-			</td>
-		</tr>
-	</table>
-	</form>
-	
 < register.jsp >
 
 	<h1>User 등록 </h1>
