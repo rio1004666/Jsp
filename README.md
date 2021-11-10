@@ -20,46 +20,71 @@ Ch02. JSP스크립트릿(Scriptlet)실습하기
   
 
 Ch02. JSP 조건문 실습하기 
+
 ```
 ex)
     <%if( a > 0 ) {%> 
     <%}%>
 ```
-Ch02. JSP 반복문 실습하기 
 
+Ch02. JSP 반복문 실습하기
+
+```
+ex) 
+   <%for(int i=0; i<=3; i++){%>
+   <p style="font-size:<%=i%rem>">JSP Tutorial </p>
+   <%}%>
+```
 
 Ch02. JSP Include 지시자 실습하기  
 
+```
+ex) 
+  <%include file="./b.jsp" %> // 가져올 파일을 include하기
+```
 
 Ch03. JSP - Request객체
 
+- 웹브라우저를 통해 서버에 어떤 정보를 요청하는것
+
+- 클라이언트에서 넘어오는 데이터를 서버 측에서 받아오는 객체
+
+```
+ex) 
+
+request.getRemoteAddr(); // 클라이언트 ip주소 가져오기
+
+request.getParameter(파라미터);  // 클라이언트 요청시 전달하는 데이터값 가져오기
+
+```
 
 Ch03. JSP - Response 내장객체
 
-response 내장객체
-
 - Client 에서 Server 로 요청한 처리 결과를 응답해주는 객체 
+
 - Server 에서 Client로 전송되는 객체 
 
-redirect 기능 
+Reirect 기능 
 
--Server에서 Client로 다시 요청을 명령하는 response객체의 기능 
-나는 정보가 없으니까 다른데로 가 
+- Server에서 Client로 다시 요청을 명령하는 response 객체의 기능 
+
 - 최종 요청에 대한 주소가 반영 
 
-forward 기능 
+Forward 기능 
 
 - 시스템에서 페이지를 요청하는 pageContext 객체의 기능 
+
 - 최초 요청에 대한 주소가 반영 
-- 
+
 
 Ch03. JSP - pageContext 내장객체
 
-jsp 내부 페이지객체 pageContext => forward기능 시스템 (서버)내에서 이동 
+JSP 내부 페이지객체 pageContext => forward 기능 시스템 (서버)내에서 이동 
 	
 pageContext 내장객체
 
 - JSP 페이지에 대해 1:1 로 연결된 객체로 JSP 페이지당 하나의 pageContext객체가 생성 
+
 - 주요 기능은 페이지의 흐름제어(forward)에 사용 
 
 forward 기능 
@@ -89,15 +114,51 @@ Cookie
 
 Ch04. Jsp Insert 실습
 
+Class.forName("com.mysql.jdbc.Driver") // 드라이버 로딩
 
+// DB연결 
+String host = "jdbc:mysql://서버주소:db포트번호/db명";
+String user = "db사용자아이디";
+String password = "db사용자패스워드";
+
+Connection conn = DriverManager.getConnection(host,user,password);
+
+// 쿼리 실행을 위한 statement 또는 preparestatement 객체 생성 
+
+PrepareStatement psmt = conn.prepareStatement("INSERT INTO `MEMBER` VALUES(?,?,?,?);"); // INSERT INTO~ 쿼리문 셋팅 
+
+// 와일드키워드에 각각 차례로 데이터를 저장하도록 합니다. 
+
+psmt.setString(1,uid);
+psmt.setString(2,pass);
+psmt.setString(3,name);
+psmt.setString(4,hp);
+
+//  모든 쿼리문 셋팅완료 했으므로 쿼리문 실행
+
+psmt.executeUpdate();
+
+//  메모리해제 
+psmt.close();
+conn.close();
 
 Ch05. Jsp JSON 데이터 실습
 
-json 데이터
+Json 데이터
 
 - Javascript  Object Notation (자바 객체 표기) 
 - 이기종간의 데이터 교환할 때 사용하는 표준 포맷
 - 사물인터넷시대에 어떤 클라이언트든 교환가능 
+
+Gson을 활용한 데이터 전송하기 
+
+MemberVo vo = new MemberVo();
+vo.setUid("abcd");
+vo.setName("홍길동");
+
+Gson gson = new Gson();
+String json = gson.toJson(vo);
+out.println(json);
 
 
 Ch05. Jsp AJAX 실습
@@ -107,8 +168,6 @@ AJAX(Asychronous Jacascript And Xml)
 - 일반적인 페이지 요청을 위한 HTTP 통신과 다르게 데이터 요청을 위한 부분 통신 (비동기)
 - 데이터 결과는 일반적으로 Json을 사용 
 - 80~90퍼가 이통신을 사용..왜? html문서가 아닌 앱을 주로 사용 !!!!!
-
-
 
 
 Ch06. JSP 표현언어(Expression Language) 기본 실습
