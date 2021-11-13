@@ -1,6 +1,6 @@
 ### Jsp 
 
-Jsp수업예제
+Jsp 수업예제
 
 Ch01. Jsp 페이지 출력하기
 
@@ -174,6 +174,7 @@ Ch06. JSP 표현언어(Expression Language) 기본 실습
 
 
 Ch06. JSP 표현언어(Expression Language) 내장객체 실습
+
 
 
 ###Ch07. JSP MODEL2 MVC 실습
