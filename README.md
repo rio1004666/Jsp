@@ -176,7 +176,7 @@ Ch06. JSP 표현언어(Expression Language) 기본 실습
 Ch06. JSP 표현언어(Expression Language) 내장객체 실습
 
 
-Ch07. JSP MODEL2 MVC 실습
+###Ch07. JSP MODEL2 MVC 실습
 
 Model -      비지니스 로직과 데이터베이 연동을 담당하는 영역입니다. 
 View -       실제로 화면에 보여지는 영역입니다.
@@ -191,5 +191,6 @@ com.mysql.jdbc.driver 클래스를 통해 db연결을 하도록 설정하였고,
 컨트롤러에서 전달한 VO(관계형데이터베이스 레코드에 대응되는 객체)를 
 데이터베이스(MySQL)에 저장하도록 하였습니다.
 
-Model
+
+
 
